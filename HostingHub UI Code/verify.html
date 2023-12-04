@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Verify OTP</title>
+    <link rel="stylesheet" href="verify.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Verify OTP</h1>
+        <form id="otpForm">
+            <div class="form-field">
+              <h2><label for="otp">Enter OTP sent to your Email ID</label></h2><br>
+                <input type="text" name="otp" id="otp" pattern="[0-9]{6}" required />
+            </div>
+            <div class="form-field">
+                <button class="btn" type="submit">Verify OTP</button><br><br>
+            </div>
+        </form>
+        <div id="popup">
+            <span id="popupMessage"></span>
+            <button id="okButton">OK</button>
+        </div>    
+
+        <script>
+ document.getElementById('otpForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var otp = document.getElementsByName('otp')[0].value;
+
+    fetch('http://localhost:8090/admin/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "otp": otp
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Response received:', data);
+
+        var popup = document.getElementById('popup');
+        var popupMessage = document.getElementById('popupMessage');
+       var okButton = document.getElementById('okButton');
+
+        if (popup && popupMessage && okButton) {
+            if (data.result === 'Login successful for admin') {
+                setPopup('white', 'Login successful for Admin! Click OK to continue.', 'dashboard.html');
+            } else if (data.result === 'Login successful for email') {
+                setPopup('white', 'Login successful for Email! Click OK to continue.', 'dashboardEmail.html');
+            } else if (data.result === 'Login successful for hosting') {
+                setPopup('white', 'Login successful for Hosting! Click OK to continue.', 'dashboardHosting.html');
+            }
+            else if (data.result === 'Login successful for It returns') {
+                setPopup('white', 'Login successful for It Returns! Click OK to continue.', 'itreturnsadd.html');
+            }
+             else {
+                setPopup('white', 'Login Failed. Please try again.', '');
+            }
+        } else {
+            console.error('One or more elements not found');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+
+function setPopup(backgroundColor, message, redirectUrl) {
+    var popup = document.getElementById('popup');
+    var popupMessage = document.getElementById('popupMessage');
+    var okButton = document.getElementById('okButton');
+
+    popup.style.backgroundColor = backgroundColor;
+    popupMessage.innerText = message;
+
+    okButton.addEventListener('click', function () {
+        if (redirectUrl) {
+            window.location.href = redirectUrl;
+        } else {
+            popup.style.display = 'none';
+            location.reload();
+        }
+    });
+
+    popup.style.display = 'flex';
+}
+
+        </script>
+        </div>
+            
+</body>
+
+</html>

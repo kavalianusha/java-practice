@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard for Email</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+    <div class="top-navbar">
+       
+        <div class="logo">
+            <img src="https://pathbreakertech.com/uploads/settings/general_settings_1675415847_112573057.png" alt="PathBreaker Logo">
+        </div>
+        <h1 style="height: 20px; margin-right: 450px; text-align: center;">Hosting Hub Dashboard</h1>
+    
+    <div>
+    <!-- <a id="logoutLink" class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <img src="img/user-icon.png">
+    </a> -->
+    <div class="dropdown-menu">
+        <a  id="logout" class="dropdown-item" href="#">
+          <img src="https://icons.veryicon.com/png/o/internet--web/website-icons/logout-8.png" alt="Logout Icon">
+            <span>Log Out</span>
+            <i class="fa fa-sign-out"></i>
+        </a>
+    </div>
+</div>
+</div>
+    <div class="left-navbar">
+        <div class="container">
+            <aside class="sidebar">
+              <ul>
+                <!-- <li class="has-submenu">
+                    <a href="#">ADMIN</a>
+                    <ul class="submenu">
+                      <li><a href="adminAdd.html">Register</a></li>
+                      <li><a href="adminView.html">View</a></li>
+                    </ul>
+                  </li> -->
+                  <li class="has-submenu">
+                    <a href="#">DOMAIN</a>
+                    <ul class="submenu">
+                      <li><a href="domainAdd.html">Register</a></li>
+                      <li><a href="domainView.html">View</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-submenu">
+                    <a href="#">HOSTING</a>
+                    <ul class="submenu">
+                      <li><a href="hostingAdd.html">Register</a></li>
+                      <li><a href="hostingView.html">View</a></li>
+                    </ul>
+                  </li>
+                <li class="has-submenu">
+                  <a href="#">HOSTDOMAIN MAP</a>
+                  <ul class="submenu">
+                    <li><a href="mappingAdd.html">Register</a></li>
+                    <li><a href="mappingView.html">View</a></li>
+                  </ul>
+                </li>
+                <!-- <li class="has-submenu">
+                  <a href="#">EMAIL</a>
+                  <ul class="submenu">
+                    <li><a href="emailAdd.html">Register</a></li>
+                    <li><a href="emailView.html">View</a></li>
+                  </ul>
+                </li> -->
+              </ul>
+            </aside>
+        </div>
+          </div>
+
+          <div id="updatePopup" class="popup">
+            <span id="updatePopupMessage">Do you really want to logout?</span>
+            <button id="updateYesButton">Yes</button>
+            <button id="updateNoButton">No</button>
+        </div>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function () {
+        // When the "Log Out" link is clicked
+        document.getElementById('logout').addEventListener('click', function() {
+            console.log('Log Out link clicked'); // Log to the console
+            document.getElementById('updatePopup').style.display = 'block'; // Show the popup
+        });
+
+        // When the "Yes" button in the popup is clicked
+        document.getElementById('updateYesButton').addEventListener('click', function() {
+            console.log('Yes button clicked'); // Log to the console
+            // Redirect to login.html
+            window.location.href = 'login.html';
+        });
+
+        // When the "No" button in the popup is clicked
+        document.getElementById('updateNoButton').addEventListener('click', function() {
+            console.log('No button clicked'); // Log to the console
+            document.getElementById('updatePopup').style.display = 'none'; // Hide the popup
+        });
+    });
+
+  </script>
+    
+</body>
+</html>

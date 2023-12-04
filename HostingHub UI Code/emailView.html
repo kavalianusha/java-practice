@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email viewport</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="emailView.css">
+</head>
+
+<body>
+
+  <div class="top-navbar">
+     
+      <div class="logo">
+          <img src="https://pathbreakertech.com/uploads/settings/general_settings_1675415847_112573057.png" alt="PathBreaker Logo">
+      </div>
+      <h1 style="height: 20px; margin-right: 450px; text-align: center;">Hosting Hub Dashboard</h1>
+      <!-- <h1 class="dashboard-title">Hosting Hub Dashboard</h1> -->
+  
+      <div class="dropdown-menu">
+        <a  id="logout" class="dropdown-item" href="#">
+          <img src="https://icons.veryicon.com/png/o/internet--web/website-icons/logout-8.png" alt="Logout Icon">
+            <span>Log Out</span>
+            <i class="fa fa-sign-out"></i>
+        </a>
+    </div>
+  </div>
+  <div id="updatePopup" class="popup">
+    <span id="updatePopupMessage">Do you really want to logout?</span>
+    <button id="updateYesButton">Yes</button>
+    <button id="updateNoButton">No</button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+// When the "Log Out" link is clicked
+document.getElementById('logout').addEventListener('click', function() {
+    console.log('Log Out link clicked'); // Log to the console
+    document.getElementById('updatePopup').style.display = 'block'; // Show the popup
+});
+
+// When the "Yes" button in the popup is clicked
+document.getElementById('updateYesButton').addEventListener('click', function() {
+    console.log('Yes button clicked'); // Log to the console
+    // Redirect to login.html
+    window.location.href = 'login.html';
+});
+
+// When the "No" button in the popup is clicked
+document.getElementById('updateNoButton').addEventListener('click', function() {
+    console.log('No button clicked'); // Log to the console
+    document.getElementById('updatePopup').style.display = 'none'; // Hide the popup
+});
+});
+
+</script>
+
+<div class="left-navbar">
+    <div class="container">
+        <aside class="sidebar">
+          <ul>
+            <!-- <li class="has-submenu">
+                <a href="#">ADMIN</a>
+                <ul class="submenu">
+                  <li><a href="adminAdd.html">Register</a></li>
+                  <li><a href="adminView.html">View</a></li>
+                </ul>
+              </li>
+              <li class="has-submenu">
+                <a href="#">DOMAIN</a>
+                <ul class="submenu">
+                  <li><a href="domainAdd.html">Register</a></li>
+                  <li><a href="domainView.html">View</a></li>
+                </ul>
+              </li>
+              <li class="has-submenu">
+                <a href="#">HOSTING</a>
+                <ul class="submenu">
+                  <li><a href="hostingAdd.html">Register</a></li>
+                  <li><a href="hostingView.html">View</a></li>
+                </ul>
+              </li>
+            <li class="has-submenu">
+              <a href="#">HOSTDOMAIN MAP</a>
+              <ul class="submenu">
+                <li><a href="mappingAdd.html">Register</a></li>
+                <li><a href="mappingView.html">View</a></li>
+              </ul>
+            </li> -->
+            <li class="has-submenu">
+              <a href="#">EMAIL</a>
+              <ul class="submenu">
+                <li><a href="emailAdd.html">Register</a></li>
+                <li><a href="emailView.html">View</a></li>
+              </ul>
+            </li>
+          </ul>
+        </aside>
+        <main class="content">
+        </main>
+      </div>
+    </div>
+    <div id="updatePopup" class="popup">
+      <span id="updatePopupMessage">Do you really want to logout?</span>
+      <button id="updateYesButton">Yes</button>
+      <button id="updateNoButton">No</button>
+  </div>
+
+<script>
+ document.addEventListener('DOMContentLoaded', function () {
+  // When the "Log Out" link is clicked
+  document.getElementById('logout').addEventListener('click', function() {
+      console.log('Log Out link clicked'); // Log to the console
+      document.getElementById('updatePopup').style.display = 'block'; // Show the popup
+  });
+
+  // When the "Yes" button in the popup is clicked
+  document.getElementById('updateYesButton').addEventListener('click', function() {
+      console.log('Yes button clicked'); // Log to the console
+      // Redirect to login.html
+      window.location.href = 'login.html';
+  });
+
+  // When the "No" button in the popup is clicked
+  document.getElementById('updateNoButton').addEventListener('click', function() {
+      console.log('No button clicked'); // Log to the console
+      document.getElementById('updatePopup').style.display = 'none'; // Hide the popup
+  });
+});
+
+</script>
+
+    <div class="container">
+        <h1 class="heading">Email List</h1>
+        <table id="emailTable">
+            <thead>
+                <tr>
+                    <th>Email ID</th> <!-- New field -->
+                    <th>Email</th> <!-- New field -->
+                    <th>Username</th> <!-- New field -->
+                    <th>Password</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated here using JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- <div id="updatePopup" class="popup">
+        <span id="updatePopupMessage">Do you really want to update?</span>
+        <button id="updateYesButton">Yes</button>
+        <button id="updateNoButton">No</button>
+    </div> -->
+
+    <!-- Popup for Delete Confirmation -->
+    <div id="deletePopup" class="popup">
+        <span id="deletePopupMessage">Do you really want to delete?</span>
+        <button id="deleteYesButton">Yes</button>
+        <button id="deleteNoButton">No</button>
+    </div>
+
+ <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            //const emailTable = document.getElementById('emailTable').getElementsByTagName('tbody')[0];
+
+            function deleteEmail(emailId) {
+                fetch(`http://localhost:8090/api/email/${emailId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.result.includes('Delete successful')) {
+                            console.log(`Email with ID ${emailId} has been deleted.`);
+                            const row = document.getElementById(`emailRow_${emailId}`);
+                            location.reload();
+                        } else {
+                            console.error('Error:', data.result);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+
+            function updateEmail(emailId) {
+                // Redirect to update page with domainId
+                window.location.href = `emailUpdate.html?emailId=${emailId}`;
+            }
+
+            function showDeletePopup(emailId) {
+                document.getElementById('deletePopup').style.display = 'block';
+
+                document.getElementById('deleteYesButton').addEventListener('click', function () {
+                    deleteEmail(emailId);
+                    document.getElementById('deletePopup').style.display = 'none';
+                });
+                document.getElementById('deleteNoButton').addEventListener('click', function () {
+                    document.getElementById('deletePopup').style.display = 'none';
+                });
+            }
+
+            fetch('http://localhost:8090/api/email')
+                .then(response => response.json())
+                .then(data => {
+                    const emailTable = document.getElementById('emailTable').getElementsByTagName('tbody')[0];
+
+                    data.forEach(email => {
+
+                        const row = emailTable.insertRow();
+                        const emailIdCell = row.insertCell(0);
+                        const emailCell = row.insertCell(1);
+                        const usernameCell = row.insertCell(2);
+                        const passwordCell = row.insertCell(3);
+                        const actionCell = row.insertCell(4);
+
+                        emailIdCell.innerHTML = email.emailId; // New field
+                        emailCell.innerHTML = email.email; // New field
+                        usernameCell.innerHTML = email.username; // New field
+                        passwordCell.innerHTML = email.password;
+
+                        const editButton = document.createElement('button');
+                        editButton.type = 'button';
+                        editButton.classList.add('edit-icon');
+                        editButton.innerHTML = '<img src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png" class="edit-icon" alt="Edit">';
+                        editButton.dataset.emailId = email.emailId;
+
+                        const deleteButton = document.createElement('button');
+                        deleteButton.type = 'button';
+                        deleteButton.classList.add('delete-icon');
+                        deleteButton.innerHTML = '<img src="https://icons.veryicon.com/png/o/miscellaneous/icon-15/icon-delete-3.png" class="delete-icon" alt="Delete">';
+                        deleteButton.dataset.emailId = email.emailId;
+
+                        editButton.addEventListener('click', function () {
+                        const emailId = this.dataset.emailId;
+                        updateEmail(emailId);
+                       });
+
+                      deleteButton.addEventListener('click', function () {
+                      const emailId = this.dataset.emailId;
+                      showDeletePopup(emailId);
+                     });
+
+        actionCell.appendChild(editButton);
+        actionCell.appendChild(deleteButton);
+    });
+})
+.catch(error => console.error('Error:', error));
+});
+    </script>
+
+</body>
+
+<!-- editButton.innerHTML = '<img src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png" class="edit-icon" alt="Edit">'; -->
+<!-- deleteButton.innerHTML = '<img src="https://icons.veryicon.com/png/o/miscellaneous/icon-15/icon-delete-3.png" class="delete-icon" alt="Delete">'; -->
+
+</html>

@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-image: url('img/background.jpg'); /* Replace 'background.jpg' with your background image */
+  background-size: cover;
+  background-position: center;
+}
+
+#loginForm {
+  background-color: #fff;
+  padding: 40px 0px 40px;
+  padding-right: 60px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-field {
+  position: relative;
+  margin-bottom: 20px;
+  padding-left:150px;
+  padding-right: 40px;
+}
+.form-field input {
+  padding: 15px;
+  margin-right: 109px;
+  width: calc(100% - 30px); /* Adjust the input width as needed */
+  box-sizing: border-box;
+  border: none;
+  border-radius: 85px;
+  border-color: black;
+  box-shadow: 8px 10px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px; /* Adjust the font size as needed */
+}
+
+.form-field .icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+  margin-left: 101px;
+}
+
+.form-field .icon img {
+  max-height: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 50px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+#popup {
+  display: none;
+  position: fixed;
+  top: 80%;
+  /* right: 30px; */
+  left: 55%; 
+  transform: translate(-50%, -50%);
+  background-color: rgb(235, 235, 237);
+  border: 1px solid #000000;
+  padding: 30px;
+  border-radius: 20px;
+  padding-right: 40px;
+  box-shadow: 6px 5px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  margin-top: -450px;
+  margin-right: 100px;
+  margin-left: -60px;
+  text-align: center; /* Center the content */
+}
+
+#popupMessage {
+font-family: Georgia, 'Times New Roman', Times, serif;
+font-weight: bold;
+font-size: medium;
+color: #222222;
+text-align: center;
+margin-left: 30px;
+margin-right: 10px;
+}
+
+#okButton {
+  border-style: solid;
+  border-color: black;
+  background-color: #007bff;
+  border-radius: 5px;
+  
+  /* Add any specific styles for the OK button here */
+}
+
+

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>updateHostingForm</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="domainUpdate.css">
+</head>
+<div class="box-container"></div>
+
+<body>
+
+    <div class="top-navbar">
+       
+        <div class="logo">
+            <img src="https://pathbreakertech.com/uploads/settings/general_settings_1675415847_112573057.png" alt="PathBreaker Logo">
+        </div>
+        <h1 style="height: 20px; margin-right: 450px; text-align: center;">Hosting Hub Dashboard</h1>
+        <!-- <h1 class="dashboard-title">Hosting Hub Dashboard</h1> -->
+    
+        <div class="dropdown-menu">
+          <a  id="logout" class="dropdown-item" href="#">
+            <img src="https://icons.veryicon.com/png/o/internet--web/website-icons/logout-8.png" alt="Logout Icon">
+              <span>Log Out</span>
+              <i class="fa fa-sign-out"></i>
+          </a>
+      </div>
+    </div>
+
+    <div class="left-navbar">
+        <div class="container">
+            <aside class="sidebar">
+              <ul>
+                <!-- <li class="has-submenu">
+                    <a href="#">ADMIN</a>
+                    <ul class="submenu">
+                      <li><a href="adminAdd.html">Register</a></li>
+                      <li><a href="adminView.html">View</a></li>
+                    </ul>
+                  </li> -->
+                  <li class="has-submenu">
+                    <a href="#">DOMAIN</a>
+                    <ul class="submenu">
+                      <li><a href="domainAdd.html">Register</a></li>
+                      <li><a href="domainView.html">View</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-submenu">
+                    <a href="#">HOSTING</a>
+                    <ul class="submenu">
+                      <li><a href="hostingAdd.html">Register</a></li>
+                      <li><a href="hostingView.html">View</a></li>
+                    </ul>
+                  </li>
+                <li class="has-submenu">
+                  <a href="#">HOSTDOMAIN MAP</a>
+                  <ul class="submenu">
+                    <li><a href="mappingAdd.html">Register</a></li>
+                    <li><a href="mappingView.html">View</a></li>
+                  </ul>
+                </li>
+                <!-- <li class="has-submenu">
+                  <a href="#">EMAIL</a>
+                  <ul class="submenu">
+                    <li><a href="emailAdd.html">Register</a></li>
+                    <li><a href="emailView.html">View</a></li>
+                  </ul>
+                </li> -->
+            </ul>
+          </div>
+          </div>
+          <div id="updatePopup1" class="popup1">
+            <span id="updatePopupMessage1">Do you really want to logout?</span>
+            <button id="updateYesButton1">Yes</button>
+            <button id="updateNoButton1">No</button>
+        </div>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function () {
+        // When the "Log Out" link is clicked
+        document.getElementById('logout').addEventListener('click', function() {
+            console.log('Log Out link clicked'); // Log to the console
+            document.getElementById('updatePopup1').style.display = 'block'; // Show the popup
+        });
+
+        // When the "Yes" button in the popup is clicked
+        document.getElementById('updateYesButton1').addEventListener('click', function() {
+            console.log('Yes button clicked'); // Log to the console
+            // Redirect to login.html
+            window.location.href = 'login.html';
+        });
+
+        // When the "No" button in the popup is clicked
+        document.getElementById('updateNoButton1').addEventListener('click', function() {
+            console.log('No button clicked'); // Log to the console
+            document.getElementById('updatePopup1').style.display = 'none'; // Hide the popup
+        });
+    });
+
+  </script>
+
+      <div class="updated-content">
+          <h1>Update Hosting</h1>   
+
+          <form id="updateHostingForm">
+            <div class="form-column">
+                <div class="form-field">
+                    <label for="hostingProvider">Hosting Provider:</label>
+                    <input type="text" id="hostingProvider" name="hostingProvider" placeholder="Enter Hosting Provider" \required>
+            
+                    <label for="url">URL:</label>
+                    <input type="text" id="url" name="url" placeholder="Enter URl" \required>
+                
+                    <label for="login">Login:</label>
+                    <input type="text" id="login" name="login" placeholder="Enter Login" \required>
+               
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter Password" \required>
+                
+                    <label for="registrationEmailId">Registration Email ID:</label>
+                    <input type="email" id="registrationEmailId" name="registrationEmailId" placeholder="Enter Email Id" \required>
+               
+                    <label for="registrationPhoneNumber">Registration Phone Number:</label>
+                    <input type="tel" id="registrationPhoneNumber" name="registrationPhoneNumber" placeholder="Enter Phone No" \required>
+                </div>
+    
+             <div class="form-field2">
+        
+                    <label for="registrationDomain">Registration Domain:</label>
+                    <input type="text" id="registrationDomain" name="registrationDomain" placeholder="Enter Domain" \required>
+               
+                    <label for="hostingPurchaDate">Hosting Purchase Date:</label>
+                    <input type="date" id="hostingPurchaDate" name="hostingPurchaDate" placeholder="Enter Hosting Purchase Date" \required>
+                
+                    <label for="hostingExpireDate">Hosting Expiry Date:</label>
+                    <input type="date" id="hostingExpireDate" name="hostingExpireDate" placeholder="Enter Hosting hostingExpireDate" \required>
+                
+                    <label for="hostingCpannelUrl">Hosting Cpanel URL:</label>
+                    <input type="text" id="hostingCpannelUrl" name="hostingCpannelUrl" placeholder="Enter HostingCpannelUrl" \required>
+               
+                    <label for="hostingCpannelUserName">Hosting Cpanel Username:</label>
+                    <input type="text" id="hostingCpannelUserName" name="hostingCpannelUserName" placeholder="Enter hostingCpannelUserName" \required>
+                
+                    <label for="hostingDnsName">Hosting DNS Name:</label>
+                    <input type="text" id="hostingDnsName" name="hostingDnsName" placeholder="Enter hostingDnsName" \required>
+                </div>
+                <div  class="cross-symbol">
+                  <a href="hostingView.html">
+                    <img src="https://img.freepik.com/free-psd/x-symbol-isolated_23-2150500369.jpg?w=740&t=st=1699280425~exp=1699281025~hmac=ba4e60ee49cc0a9c7ee9f904c0f23860ce0452d23a7b7ebbb474a77002de99ae" alt="Cross Symbol">
+                </a>
+                 </div> 
+              </div>   
+            <center><input type="submit" value="Update"></center> 
+        </div>
+        </form>
+
+        <div id="updatePopup" class="popup">
+          <span id="updatePopupMessage">Do you really want to update?</span>
+          <button id="updateYesButton">Yes</button>
+          <button id="updateNoButton">No</button>
+        </div>
+
+    <div id="popup">
+      <span id="popupMessage"></span>
+      <button id="okButton">OK</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var urlParams = new URLSearchParams(window.location.search);
+        var hostingId = urlParams.get('hostingId');
+
+        // Fetch existing domain data
+        fetch(`http://localhost:8090/api/hosting/${hostingId}`)
+            .then(response => response.json())
+            .then(data => {
+                // Populate form fields with existing data
+                document.getElementById('hostingProvider').value = data.hostingProvider;
+                document.getElementById('url').value = data.url;
+                document.getElementById('login').value = data.login;
+                document.getElementById('password').value = data.password;
+                document.getElementById('registrationEmailId').value = data.registrationEmailId;
+                document.getElementById('registrationPhoneNumber').value = data.registrationPhoneNumber;
+                document.getElementById('registrationDomain').value = data.registrationDomain;
+                document.getElementById('hostingPurchaDate').value = data.hostingPurchaDate;
+                document.getElementById('hostingExpireDate').value = data.hostingExpireDate;
+                document.getElementById('hostingCpannelUrl').value = data.hostingCpannelUrl;
+                document.getElementById('hostingCpannelUserName').value = data.hostingCpannelUserName;
+                document.getElementById('hostingDnsName').value = data.hostingDnsName;
+                console.log(data); // Add this line to check the response data
+            })
+            .catch(error => console.error('Error:', error));
+
+        document.getElementById('updateHostingForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Show confirmation popup
+            document.getElementById('updatePopup').style.display = 'block';
+        });
+
+        document.getElementById('updateYesButton').addEventListener('click', function () {
+
+            var hostingProvider = document.getElementById('hostingProvider').value;
+            var url = document.getElementById('url').value;
+            var login = document.getElementById('login').value;
+            var password = document.getElementById('password').value;
+            var registrationEmailId = document.getElementById('registrationEmailId').value;
+            var registrationPhoneNumber = document.getElementById('registrationPhoneNumber').value;
+            var registrationDomain = document.getElementById('registrationDomain').value;
+            var hostingPurchaDate = document.getElementById('hostingPurchaDate').value;
+            var hostingExpireDate = document.getElementById('hostingExpireDate').value;
+            var hostingCpannelUrl = document.getElementById('hostingCpannelUrl').value;
+            var hostingCpannelUserName = document.getElementById('hostingCpannelUserName').value;
+            var hostingDnsName = document.getElementById('hostingDnsName').value;
+
+            fetch(`http://localhost:8090/api/hosting/${hostingId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "hostingProvider": hostingProvider,
+                    "url": url,
+                    "login": login,
+                    "password": password,
+                    "registrationEmailId": registrationEmailId,
+                    "registrationPhoneNumber": registrationPhoneNumber,
+                    "registrationDomain": registrationDomain,
+                    "hostingPurchaDate":hostingPurchaDate,
+                    "hostingExpireDate": hostingExpireDate,
+                    "hostingCpannelUrl": hostingCpannelUrl,
+                    "hostingCpannelUserName": hostingCpannelUserName,
+                    "hostingDnsName": hostingDnsName
+                })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok (${response.status})`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data.result);
+
+                var popup = document.getElementById('popup');
+                var popupMessage = document.getElementById('popupMessage');
+                var okButton = document.getElementById('okButton');
+
+                popup.style.backgroundColor = 'white'; // Green color for success
+                popupMessage.innerText = 'Data is updated successfully';
+
+                popup.style.display = 'flex';
+
+                okButton.addEventListener('click', function () {
+                    window.location.href = 'hostingView.html'; // Redirect to adminView.html
+                });
+            })
+            .catch(error => console.error('Error:', error));
+
+            document.getElementById('updatePopup').style.display = 'none';
+        });
+
+        document.getElementById('updateNoButton').addEventListener('click', function () {
+            // Hide the confirmation popup
+            window.location.href = 'hostingView.html';
+            document.getElementById('updatePopup').style.display = 'none';
+        });
+    });
+</script>
+
+</body>
+
+</html>

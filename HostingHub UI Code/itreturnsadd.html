@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hosting Register</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="itreturnsadd.css">
+</head>
+<!-- <div class="box-container"></div> -->
+<body>
+
+    <div class="top-navbar">
+       
+        <div class="logo">
+            <img src="https://pathbreakertech.com/uploads/settings/general_settings_1675415847_112573057.png" alt="PathBreaker Logo">
+        </div>
+        <h1 style="height: 20px; margin-right: 450px; text-align: center;">Hosting Hub Dashboard</h1>
+    
+        <div class="dropdown-menu">
+          <a  id="logout" class="dropdown-item" href="#">
+            <img src="https://icons.veryicon.com/png/o/internet--web/website-icons/logout-8.png" alt="Logout Icon">
+              <span>Log Out</span>
+              <i class="fa fa-sign-out"></i>
+          </a>
+      </div>
+    </div>
+
+    <div class="left-navbar">
+        <div class="container">
+            <aside class="sidebar">
+              <ul>
+                <!-- <li class="has-submenu">
+                    <a href="#">ADMIN</a>
+                    <ul class="submenu">
+                      <li><a href="adminAdd.html">Register</a></li>
+                      <li><a href="adminView.html">View</a></li>
+                    </ul>
+                  </li> -->
+                  <!-- <li class="has-submenu">
+                    <a href="#">DOMAIN</a>
+                    <ul class="submenu">
+                      <li><a href="domainAdd.html">Register</a></li>
+                      <li><a href="domainView.html">View</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-submenu">
+                    <a href="#">HOSTING</a>
+                    <ul class="submenu">
+                      <li><a href="hostingAdd.html">Register</a></li>
+                      <li><a href="hostingView.html">View</a></li>
+                    </ul>
+                  </li>
+                <li class="has-submenu">
+                  <a href="#">HOSTDOMAIN MAP</a>
+                  <ul class="submenu">
+                    <li><a href="mappingAdd.html">Register</a></li>
+                    <li><a href="mappingView.html">View</a></li>
+                  </ul>
+                </li> -->
+                 <li class="has-submenu">
+                  <a href="#">ITRETURNS</a>
+                  <ul class="submenu">
+                    <li><a href="itreturnsadd.html">Register</a></li>
+                    <li><a href="itreturnsView.html">View</a></li>
+                  </ul>
+                </li> 
+              </ul>
+            </aside>
+            <main class="content">
+            </main>
+          </div>
+    </div>
+  </div>
+
+  <div id="updatePopup" class="popup">
+    <span id="updatePopupMessage">Do you really want to logout?</span>
+    <button id="updateYesButton">Yes</button>
+    <button id="updateNoButton">No</button>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+// When the "Log Out" link is clicked
+document.getElementById('logout').addEventListener('click', function() {
+    console.log('Log Out link clicked'); // Log to the console
+    document.getElementById('updatePopup').style.display = 'block'; // Show the popup
+});
+
+// When the "Yes" button in the popup is clicked
+document.getElementById('updateYesButton').addEventListener('click', function() {
+    console.log('Yes button clicked'); // Log to the console
+    // Redirect to login.html
+    window.location.href = 'login.html';
+});
+
+// When the "No" button in the popup is clicked
+document.getElementById('updateNoButton').addEventListener('click', function() {
+    console.log('No button clicked'); // Log to the console
+    document.getElementById('updatePopup').style.display = 'none'; // Hide the popup
+});
+});
+
+</script>
+    <div class="register-content">
+      <h1>IT Returns Registration</h1>
+      <form id="itReturnsForm">
+          <div class="form-column">
+              <div class="form-field">
+                  <label for="serviceType">Service Type:</label>
+                  <input type="text" id="serviceType" name="serviceType" placeholder="Enter Service Type" required>
+  
+                  <label for="registeredEmail">Registered Email ID:</label>
+                  <input type="email" id="registeredEmail" name="registeredEmail" placeholder="Enter Registered Email ID" required>
+  
+                  <label for="registeredMobileNo">Registered Mobile Number:</label>
+                  <input type="tel" id="registeredMobileNo" name="registeredMobileNo" placeholder="Enter Registered Mobile Number" required>
+  
+                  <label for="registeredDate">Registered Date:</label>
+                  <input type="date" id="registeredDate" name="registeredDate" required>
+  
+              </div>
+  
+              <div class="form-field2">
+                  <label for="loginUrl">Login URL:</label>
+                  <input type="text" id="loginUrl" name="loginUrl" placeholder="Enter Login URL" required>
+  
+                  <label for="userName">User Name:</label>
+                  <input type="text" id="userName" name="userName" placeholder="Enter User Name" required>
+              
+                  <label for="password">Password:</label>
+                  <input type="password" id="password" name="password" placeholder="Enter Password" required>
+  
+                  <label for="createdBy">Created By:</label>
+                  <input type="text" id="createdBy" name="createdBy" placeholder="Enter Created By" required>
+              </div>
+          </div>
+  
+          <center><button type="submit" class="action-button">Submit</button></center>
+      </form>
+  
+      <div id="popup">
+          <span id="popupMessage"></span>
+          <button id="okButton">OK</button>
+      </div>
+  </div>
+  
+  
+    <script>
+       document.getElementById('itReturnsForm').addEventListener('submit', function (event) {
+       event.preventDefault();
+
+      // Extract IT Returns fields from the form
+      var serviceType = document.getElementById('serviceType').value;
+      var registeredEmail = document.getElementById('registeredEmail').value;
+      var registeredMobileNo = document.getElementById('registeredMobileNo').value;
+      var registeredDate = document.getElementById('registeredDate').value;
+      var loginUrl = document.getElementById('loginUrl').value;
+      var userName = document.getElementById('userName').value;
+      var password = document.getElementById('password').value;
+      var createdBy = document.getElementById('createdBy').value;
+
+    // Use fetch to send a POST request to the IT Returns endpoint
+     fetch('http://localhost:8090/api/itreturns', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "serviceType": serviceType,
+            "registeredEmail": registeredEmail,
+            "registeredMobileNo": registeredMobileNo,
+            "registeredDate": registeredDate,
+            "loginUrl": loginUrl,
+            "userName": userName,
+            "password": password,
+            "createdBy": createdBy
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+            var popup = document.getElementById('popup');
+            var popupMessage = document.getElementById('popupMessage');
+            var okButton = document.getElementById('okButton');
+
+            if (data.result.includes('successful')) {
+                popup.style.backgroundColor = 'none'; // Green color for success
+                popupMessage.innerText = 'IT Returns Registration successful!';
+            } else {
+                popup.style.backgroundColor = 'none'; // Red color for error
+                popupMessage.innerText = 'IT Returns Registration failed!';
+            }
+            popup.style.display = 'flex';
+
+            okButton.addEventListener('click', function () {
+                popup.style.display = 'none';
+                location.reload();
+                window.location.href = 'itreturnsView.html'; // Redirect to itreturnsView.html
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+     });
+
+    </script>
+
+</body>
+
+</html>

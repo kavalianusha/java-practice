@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hosting viewport</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="hostingView.css">
+</head>
+
+<body>
+
+  <div class="top-navbar">
+       
+    <div class="logo">
+        <img src="https://pathbreakertech.com/uploads/settings/general_settings_1675415847_112573057.png" alt="PathBreaker Logo">
+    </div>
+    <h1 style="height: 20px; margin-right: 450px; text-align: center;">Hosting Hub Dashboard</h1>
+
+    <div class="dropdown-menu">
+        <a  id="logout" class="dropdown-item" href="#">
+          <img src="https://icons.veryicon.com/png/o/internet--web/website-icons/logout-8.png" alt="Logout Icon">
+            <span>Log Out</span>
+            <i class="fa fa-sign-out"></i>
+        </a>
+    </div>
+</div>
+
+<div class="left-navbar">
+    <div class="container">
+        <aside class="sidebar">
+          <ul>
+            <li class="has-submenu">
+                <a href="#">ADMIN</a>
+                <ul class="submenu">
+                  <li><a href="adminAdd.html">Register</a></li>
+                  <li><a href="adminView.html">View</a></li>
+                </ul>
+              </li>
+              <li class="has-submenu">
+                <a href="#">DOMAIN</a>
+                <ul class="submenu">
+                  <li><a href="domainAdd1.html">Register</a></li>
+                  <li><a href="domainView1.html">View</a></li>
+                </ul>
+              </li>
+              <li class="has-submenu">
+                <a href="#">HOSTING</a>
+                <ul class="submenu">
+                  <li><a href="hostingAdd1.html">Register</a></li>
+                  <li><a href="hostingView1.html">View</a></li>
+                </ul>
+              </li>
+            <li class="has-submenu">
+              <a href="#">HOSTDOMAIN MAP</a>
+              <ul class="submenu">
+                <li><a href="mappingAdd1.html">Register</a></li>
+                <li><a href="mappingView1.html">View</a></li>
+              </ul>
+            </li>
+            <li class="has-submenu">
+              <a href="#">EMAIL</a>
+              <ul class="submenu">
+                <li><a href="emailAdd1.html">Register</a></li>
+                <li><a href="emailView1.html">View</a></li>
+              </ul>
+              <li class="has-submenu">
+                <a href="#">IT RETURNS</a>
+                <ul class="submenu">
+                  <li><a href="itreturnsadd1.html">Register</a></li>
+                  <li><a href="itreturnsView1.html">View</a></li>
+                </ul>
+            </li>
+          </ul>
+        </aside>
+        <main class="content">
+        </main>
+      </div>
+    </div>
+    <div id="updatePopup" class="popup">
+        <span id="updatePopupMessage">Do you really want to logout?</span>
+        <button id="updateYesButton">Yes</button>
+        <button id="updateNoButton">No</button>
+    </div>
+
+<script>
+   document.addEventListener('DOMContentLoaded', function () {
+    // When the "Log Out" link is clicked
+    document.getElementById('logout').addEventListener('click', function() {
+        console.log('Log Out link clicked'); // Log to the console
+        document.getElementById('updatePopup').style.display = 'block'; // Show the popup
+    });
+
+    // When the "Yes" button in the popup is clicked
+    document.getElementById('updateYesButton').addEventListener('click', function() {
+        console.log('Yes button clicked'); // Log to the console
+        // Redirect to login.html
+        window.location.href = 'login.html';
+    });
+
+    // When the "No" button in the popup is clicked
+    document.getElementById('updateNoButton').addEventListener('click', function() {
+        console.log('No button clicked'); // Log to the console
+        document.getElementById('updatePopup').style.display = 'none'; // Hide the popup
+    });
+});
+
+</script>
+
+    <div class="container">
+        <h1 class="heading">Hosting List</h1>
+        <table id="hostingTable">
+            <thead>
+                <tr>
+                    <th>Hosting ID</th>
+                    <th>Hosting Provider</th>
+                    <th>URL</th>
+                    <th>Login</th>
+                    <th>Password</th>
+                    <th>Registration Email ID</th>
+                    <th>Registration Phone Number</th>
+                    <th>Registration Domain</th>
+                    <th>Hosting Purchase Date</th>
+                    <th>Hosting Expire Date</th>
+                    <th>Hosting Cpanel URL</th>
+                    <th>Hosting Cpanel User Name</th>
+                    <th>Hosting DNS Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated here using JavaScript -->
+            </tbody>
+        </table>
+    </div>
+    <!-- <div id="updatePopup" class="popup">
+        <span id="updatePopupMessage">Do you really want to update?</span>
+        <button id="updateYesButton">Yes</button>
+        <button id="updateNoButton">No</button>
+    </div> -->
+
+    <!-- Popup for Delete Confirmation -->
+    <div id="deletePopup" class="popup">
+        <span id="deletePopupMessage">Do you really want to delete?</span>
+        <button id="deleteYesButton">Yes</button>
+        <button id="deleteNoButton">No</button>
+    </div>
+<script>
+    
+    document.addEventListener("DOMContentLoaded", function () {
+    const hostingTable = document.getElementById('hostingTable').getElementsByTagName('tbody')[0];
+
+    function deleteHosting(hostingId) {
+        fetch(`http://localhost:8090/api/hosting/${hostingId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.result); // Add this line to check the result
+                if (data.result.includes('Deleted Successfully')) {
+                    console.log(`Hosting with ID ${hostingId} has been deleted.`);
+                    const row = document.getElementById(`HostingRow_${hostingId}`);
+                    location.reload();
+                } else {
+                    console.error('Error:', data.result);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    function updateHosting(hostingId) {
+        // Redirect to update page with domainId
+        window.location.href = `hostingUpdate.html?hostingId=${hostingId}`;
+    }
+
+
+    function showDeletePopup(hostingId) {
+        document.getElementById('deletePopup').style.display = 'block';
+
+        document.getElementById('deleteYesButton').addEventListener('click', function () {
+            deleteHosting(hostingId);
+            document.getElementById('deletePopup').style.display = 'none';
+        });
+
+        document.getElementById('deleteNoButton').addEventListener('click', function () {
+            document.getElementById('deletePopup').style.display = 'none';
+        });
+    }
+
+fetch('http://localhost:8090/api/hosting')
+    .then(response => response.json())
+    .then(data => {
+        const hostingTable = document.getElementById('hostingTable').getElementsByTagName('tbody')[0];
+
+        data.forEach(hosting => {
+            const row = hostingTable.insertRow(); // Create a new row for each hosting
+
+            const hostingIdCell = row.insertCell(0);
+            const hostingProviderCell = row.insertCell(1);
+            const urlCell = row.insertCell(2);
+            const loginCell = row.insertCell(3);
+            const passwordCell = row.insertCell(4);
+            const registrationEmailIdCell = row.insertCell(5);
+            const registrationPhoneNumberCell = row.insertCell(6);
+            const registrationDomainCell = row.insertCell(7);
+            const hostingPurchaDateCell = row.insertCell(8);
+            const hostingExpireDateCell = row.insertCell(9);
+            const hostingCpannelUrlCell = row.insertCell(10);
+            const hostingCpannelUserNameCell = row.insertCell(11);
+            const hostingDnsNameCell = row.insertCell(12);
+            const actionCell = row.insertCell(13);
+
+            hostingIdCell.innerHTML = hosting.hostingId;
+            hostingProviderCell.innerHTML = hosting.hostingProvider;
+            urlCell.innerHTML = hosting.url;
+            loginCell.innerHTML = hosting.login;
+            passwordCell.innerHTML = hosting.password;
+            registrationEmailIdCell.innerHTML = hosting.registrationEmailId;
+            registrationPhoneNumberCell.innerHTML = hosting.registrationPhoneNumber;
+            registrationDomainCell.innerHTML = hosting.registrationDomain;
+            hostingPurchaDateCell.innerHTML = hosting.hostingPurchaDate;
+            hostingExpireDateCell.innerHTML = hosting.hostingExpireDate;
+            hostingCpannelUrlCell.innerHTML = hosting.hostingCpannelUrl;
+            hostingCpannelUserNameCell.innerHTML = hosting.hostingCpannelUserName;
+            hostingDnsNameCell.innerHTML = hosting.hostingDnsName;           
+
+                const editButton = document.createElement('button');
+                editButton.type = 'button';
+                editButton.classList.add('edit-icon');
+                editButton.innerHTML = '<img src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png" class="edit-icon" alt="Edit">';
+                editButton.dataset.hostingId = hosting.hostingId;
+
+                const deleteButton = document.createElement('button');
+                deleteButton.type = 'button';
+                deleteButton.classList.add('delete-icon');
+                deleteButton.innerHTML = '<img src="https://icons.veryicon.com/png/o/miscellaneous/icon-15/icon-delete-3.png" class="delete-icon" alt="Delete">';
+                deleteButton.dataset.hostingId = hosting.hostingId;
+
+                editButton.addEventListener('click', function () {
+                    const hostingId = this.dataset.hostingId;
+                    updateHosting(hostingId);
+                });
+
+                deleteButton.addEventListener('click', function () {
+                    const hostingId = this.dataset.hostingId;
+                    showDeletePopup(hostingId);
+                });
+
+                actionCell.appendChild(editButton);
+                actionCell.appendChild(deleteButton);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+});
+    </script>
+</body>
+
+<!-- editButton.innerHTML = '<img src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png" class="edit-icon" alt="Edit">'; -->
+<!-- deleteButton.innerHTML = '<img src="https://icons.veryicon.com/png/o/miscellaneous/icon-15/icon-delete-3.png" class="delete-icon" alt="Delete">'; -->
+
+</html>

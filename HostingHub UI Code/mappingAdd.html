@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HostDomain Mapping Register</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="mappingAdd.css">
+</head>
+<!-- <div class="box-container"></div> -->
+<body>
+
+    <div class="top-navbar">
+       
+        <div class="logo">
+            <img src="https://pathbreakertech.com/uploads/settings/general_settings_1675415847_112573057.png" alt="PathBreaker Logo">
+        </div>
+        <h1 style="height: 20px; margin-right: 450px; text-align: center;">Hosting Hub Dashboard</h1>
+    
+        <div class="dropdown-menu">
+            <a  id="logout" class="dropdown-item" href="#">
+              <img src="https://icons.veryicon.com/png/o/internet--web/website-icons/logout-8.png" alt="Logout Icon">
+                <span>Log Out</span>
+                <i class="fa fa-sign-out"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="left-navbar">
+        <div class="container">
+            <aside class="sidebar">
+              <ul>
+                <!-- <li class="has-submenu">
+                    <a href="#">ADMIN</a>
+                    <ul class="submenu">
+                      <li><a href="adminAdd.html">Register</a></li>
+                      <li><a href="adminView.html">View</a></li>
+                    </ul>
+                  </li> -->
+                  <li class="has-submenu">
+                    <a href="#">DOMAIN</a>
+                    <ul class="submenu">
+                      <li><a href="domainAdd.html">Register</a></li>
+                      <li><a href="domainView.html">View</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-submenu">
+                    <a href="#">HOSTING</a>
+                    <ul class="submenu">
+                      <li><a href="hostingAdd.html">Register</a></li>
+                      <li><a href="hostingView.html">View</a></li>
+                    </ul>
+                  </li>
+                <li class="has-submenu">
+                  <a href="#">HOSTDOMAIN MAP</a>
+                  <ul class="submenu">
+                    <li><a href="mappingAdd.html">Register</a></li>
+                    <li><a href="mappingView.html">View</a></li>
+                  </ul>
+                </li>
+                <!-- <li class="has-submenu">
+                  <a href="#">EMAIL</a>
+                  <ul class="submenu">
+                    <li><a href="emailAdd.html">Register</a></li>
+                    <li><a href="emailView.html">View</a></li>
+                  </ul>
+                </li> -->
+              </ul>
+            </aside>
+            <main class="content">
+            </main>
+          </div>
+          <script></script>
+    </div>
+    <div id="updatePopup" class="popup">
+      <span id="updatePopupMessage">Do you really want to logout?</span>
+      <button id="updateYesButton">Yes</button>
+      <button id="updateNoButton">No</button>
+  </div>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+  // When the "Log Out" link is clicked
+  document.getElementById('logout').addEventListener('click', function() {
+      console.log('Log Out link clicked'); // Log to the console
+      document.getElementById('updatePopup').style.display = 'block'; // Show the popup
+  });
+  
+  // When the "Yes" button in the popup is clicked
+  document.getElementById('updateYesButton').addEventListener('click', function() {
+      console.log('Yes button clicked'); // Log to the console
+      // Redirect to login.html
+      window.location.href = 'login.html';
+  });
+  
+  // When the "No" button in the popup is clicked
+  document.getElementById('updateNoButton').addEventListener('click', function() {
+      console.log('No button clicked'); // Log to the console
+      document.getElementById('updatePopup').style.display = 'none'; // Hide the popup
+  });
+  });
+  
+  </script>
+
+          <div class="register-content">
+
+          <h1>HostDomain Map Registration</h1>   
+
+    <form id="updateMappingForm">
+        <div class="form-column">
+            <div class="form-field">
+
+                <label for="domainName">Domain Name</label>
+                <select id="domainName" name="domainName" required>
+                    <option value="" disabled selected>Select Domain Name</option>
+                </select>
+    
+                <label for="hostProvider">Host Provider</label>
+                <select id="hostProvider" name="hostProvider" required>
+                    <option value="" disabled selected>Select Host Provider</option>
+                </select>
+
+        
+                <label for="payment">Payment</label>
+                <input type="text" id="payment" name="payment" placeholder="Enter the Payment" required/>
+        
+            </div>
+
+            <div class="form-field2">
+                <label for="registrationDate">Registration Date</label>
+                <input type="date" id="registrationDate" name="registrationDate" placeholder="Enter the Registration Date" />
+
+                <label for="expiryDate">Expiry Date</label>
+                <input type="date" id="expiryDate" name="expiryDate" placeholder="Enter the Expiry Date" />
+        
+                <label for="duration">Duration</label>
+                <input type="text" id="duration" name="duration" placeholder="Enter the Duration" />
+    
+            </div>
+        </div>
+        <center><button type="submit" class="action-button">Submit</button></center>
+    </form>
+    <div id="popup">
+      <span id="popupMessage"></span>
+      <button id="okButton">OK</button>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Populate domain names dropdown
+    fetch('http://localhost:8090/get/alldomains')
+        .then(response => response.json())
+        .then(data => {
+            const domainNameSelect = document.getElementById('domainName');
+            data.forEach(domain => {
+                const option = document.createElement('option');
+                option.value = domain;
+                option.text = domain;
+                domainNameSelect.add(option);
+            });
+        })
+        .catch(error => console.error('Error fetching domains:', error));
+
+    // Populate hosting providers dropdown
+    fetch('http://localhost:8090/get/allhosting')
+        .then(response => response.json())
+        .then(data => {
+            const hostProviderSelect = document.getElementById('hostProvider');
+            data.forEach(provider => {
+                const option = document.createElement('option');
+                option.value = provider;
+                option.text = provider;
+                hostProviderSelect.add(option);
+            });
+        })
+        .catch(error => console.error('Error fetching hosting providers:', error));
+});
+
+        </script>
+        <script>
+ document.getElementById('updateMappingForm').addEventListener('submit', function(event) {
+ event.preventDefault();
+
+      var domainName = document.getElementById('domainName').value;
+      var hostProvider = document.getElementById('hostProvider').value;
+      var payment = document.getElementById('payment').value;
+      var registrationDate = document.getElementById('registrationDate').value;
+      var expiryDate = document.getElementById('expiryDate').value;
+      var duration = document.getElementById('duration').value;
+
+
+      fetch('http://localhost:8090/hostdomainmap/add', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              "domainName": domainName,
+              "hostProvider": hostProvider,
+              "payment": payment,
+              "registrationDate": registrationDate,
+              "expiryDate": expiryDate,
+              "duration": duration
+              
+          })
+      })
+      .then(response => response.json())
+      .then(data => {
+          var popup = document.getElementById('popup');
+          var popupMessage = document.getElementById('popupMessage');
+          var okButton = document.getElementById('okButton');
+
+          if (data.result.includes('successful')) {
+              popup.style.backgroundColor = 'none'; // Green color for success
+              popupMessage.innerText = 'Registration successfull !';
+          } else {
+              popup.style.backgroundColor = 'none'; // Red color for error
+              popupMessage.innerText = 'Registration failed !';
+          }
+
+          popup.style.display = 'flex';
+     
+         okButton.addEventListener('click', function() {
+         popup.style.display = 'none';
+         location.reload();
+         window.location.href = 'mappingView.html'; // Redirect to adminView.html
+     });
+ })
+ .catch(error => {
+     console.error('Error:', error);
+ });
+});
+</script>
+</body>
+
+</html>

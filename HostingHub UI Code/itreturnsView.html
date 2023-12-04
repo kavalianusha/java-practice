@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Returns Viewport</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="itreturnsView.css">
+</head>
+<body>
+<div class="top-navbar">
+    <div class="logo">
+        <img src="https://pathbreakertech.com/uploads/settings/general_settings_1675415847_112573057.png" alt="PathBreaker Logo">
+    </div>
+    <h1 style="height: 20px; margin-right: 450px; text-align: center;">Hosting Hub Dashboard</h1>
+    <div class="dropdown-menu">
+        <a  id="logout" class="dropdown-item" href="#">
+            <img src="https://icons.veryicon.com/png/o/internet--web/website-icons/logout-8.png" alt="Logout Icon">
+            <span>Log Out</span>
+            <i class="fa fa-sign-out"></i>
+        </a>
+    </div>
+</div>
+    <div class="left-navbar">
+        <div class="container">
+            <aside class="sidebar">
+                <ul>
+                    <li class="has-submenu">
+                        <a href="#">ADMIN</a>
+                        <ul class="submenu">
+                            <li><a href="adminAdd.html">Register</a></li>
+                            <li><a href="adminView.html">View</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#">DOMAIN</a>
+                        <ul class="submenu">
+                            <li><a href="domainAdd.html">Register</a></li>
+                            <li><a href="domainView.html">View</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#">HOSTING</a>
+                        <ul class="submenu">
+                            <li><a href="hostingAdd.html">Register</a></li>
+                            <li><a href="itreturnsView.html">View</a></li> <!-- Changed from hostingView.html to itreturnsView.html -->
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#">HOSTDOMAIN MAP</a>
+                        <ul class="submenu">
+                            <li><a href="mappingAdd.html">Register</a></li>
+                            <li><a href="mappingView.html">View</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#">EMAIL</a>
+                        <ul class="submenu">
+                            <li><a href="emailAdd.html">Register</a></li>
+                            <li><a href="emailView.html">View</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#">IT RETURNS</a>
+                        <ul class="submenu">
+                            <li><a href="itreturnsadd.html">Register</a></li>
+                            <li><a href="itreturnsView.html">View</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </aside>
+            <main class="content">
+            </main>
+        </div>
+    </div>
+    <div id="updatePopup" class="popup">
+        <span id="updatePopupMessage">Do you really want to logout?</span>
+        <button id="updateYesButton">Yes</button>
+        <button id="updateNoButton">No</button>
+    </div>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    // When the "Log Out" link is clicked
+    document.getElementById('logout').addEventListener('click', function() {
+        console.log('Log Out link clicked'); // Log to the console
+        document.getElementById('updatePopup').style.display = 'block'; // Show the popup
+    });
+    
+    // When the "Yes" button in the popup is clicked
+    document.getElementById('updateYesButton').addEventListener('click', function() {
+        console.log('Yes button clicked'); // Log to the console
+        // Redirect to login.html
+        window.location.href = 'login.html';
+    });
+    
+    // When the "No" button in the popup is clicked
+    document.getElementById('updateNoButton').addEventListener('click', function() {
+        console.log('No button clicked'); // Log to the console
+        document.getElementById('updatePopup').style.display = 'none'; // Hide the popup
+    });
+    });
+    </script>
+    <div class="container">
+        <h1 class="heading">IT Returns List</h1>
+        <table id="itreturns">
+            <thead>
+                <tr>
+                    <th>Customer Id</th>
+                    <th>Service Type</th>
+                    <th>Registered Email</th>
+                    <th>RegisteredMobileNo</th>
+                    <th>RegisteredDate</th>
+                    <th>LoginUrl</th>
+                    <th>UserName</th>
+                    <th>Password</th>
+                    <th>CreatedBy</th>
+                    <th>CreatedDate</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated here using JavaScript -->
+            </tbody>
+        </table>
+    </div>
+    <!-- Popup for Delete Confirmation -->
+    <div id="deletePopup" class="popup">
+        <span id="deletePopupMessage">Do you really want to delete?</span>
+        <button id="deleteYesButton">Yes</button>
+        <button id="deleteNoButton">No</button>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const itreturns = document.getElementById('itreturns').getElementsByTagName('tbody')[0];
+            function deleteITReturns(customerId) {
+                fetch(`http://localhost:8090/api/itreturns/${customerId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data.result);
+                        if (data.result.includes('Deleted Successfully')) {
+                            console.log(`IT Returns with ID ${customerId} has been deleted.`);
+                            const row = document.getElementById(`ITReturnsRow_${customerId}`);
+                            row.remove(); // Remove the row from the DOM
+                        } else {
+                            console.error('Error:', data.result);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    })
+                    .finally(() => {
+                        location.reload();
+                        window.location.href = 'itreturnsView.html';
+                    });
+            }
+            function updateITReturns(customerId) {
+                window.location.href = `itreturnUpdate1.html?customerId=${customerId}`;
+            }
+            function showDeletePopup(customerId) {
+                document.getElementById('deletePopup').style.display = 'block';
+                document.getElementById('deleteYesButton').addEventListener('click', function () {
+                    deleteITReturns(customerId);
+                    document.getElementById('deletePopup').style.display = 'none';
+                });
+                document.getElementById('deleteNoButton').addEventListener('click', function () {
+                    document.getElementById('deletePopup').style.display = 'none';
+                });
+            }
+            fetch('http://localhost:8090/api/itreturns')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Data:', data);
+                    const itReturnsList = data;
+                    const tbody = document.getElementById('itreturns').getElementsByTagName('tbody')[0];
+                    itReturnsList.forEach(itReturns => {
+                        const row = tbody.insertRow();
+                        row.id = `ITReturnsRow_${itReturns.customerId}`; // Set a unique ID for each row
+                        const customerIdCell = row.insertCell(0);
+                        const serviceTypeCell = row.insertCell(1);
+                        const registeredEmailCell = row.insertCell(2);
+                        const registeredMobileNoCell = row.insertCell(3);
+                        const registeredDateCell = row.insertCell(4);
+                        const loginUrlCell = row.insertCell(5);
+                        const userNameCell = row.insertCell(6);
+                        const passwordCell = row.insertCell(7);
+                        const createdByCell = row.insertCell(8);
+                        const createdDateCell = row.insertCell(9);
+                        customerIdCell.innerHTML = itReturns.customerId;
+                        serviceTypeCell.innerHTML = itReturns.serviceType;
+                        registeredEmailCell.innerHTML = itReturns.registeredEmail;
+                        registeredMobileNoCell.innerHTML = itReturns.registeredMobileNo;
+                        registeredDateCell.innerHTML = itReturns.registeredDate;
+                        loginUrlCell.innerHTML = itReturns.loginUrl;
+                        userNameCell.innerHTML = itReturns.userName;
+                        passwordCell.innerHTML = itReturns.password;
+                        createdByCell.innerHTML = itReturns.createdBy;
+                        createdDateCell.innerHTML = itReturns.createdDate;
+                        const editButton = document.createElement('button');
+                        editButton.type = 'button';
+                        editButton.classList.add('edit-icon');
+                        editButton.innerHTML = '<img src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png" class="edit-icon" alt="Edit">';
+                        editButton.dataset.customerId = itReturns.customerId;
+                        const deleteButton = document.createElement('button');
+                        deleteButton.type = 'button';
+                        deleteButton.classList.add('delete-icon');
+                        deleteButton.innerHTML = '<img src="https://icons.veryicon.com/png/o/miscellaneous/icon-15/icon-delete-3.png" class="delete-icon" alt="Delete">';
+                        deleteButton.dataset.customerId = itReturns.customerId;
+                        editButton.addEventListener('click', function () {
+                            const customerId = this.dataset.customerId;
+                            updateITReturns(customerId);
+                        });
+                        deleteButton.addEventListener('click', function () {
+                            const customerId = this.dataset.customerId;
+                            showDeletePopup(customerId);
+                        });
+                        const actionCell = row.insertCell(10);
+                        actionCell.appendChild(editButton);
+                        actionCell.appendChild(deleteButton);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

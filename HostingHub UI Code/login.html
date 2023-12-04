@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page with OTP Example</title>
+    <link rel="stylesheet" href="loginStyle.css">
+</head>
+
+<body>
+    <div id="bg"></div>
+
+    <form id="loginForm">
+        <center> 
+          <h1>Login Page</h1>
+        </center>
+        <div class="form-field">
+            <div class="icon">
+                <img src="img/user-icon.png" alt="User Icon">
+            </div>
+            <input type="text" placeholder="Email / Username" name="userNameOrEmailId" required />
+        </div>
+        
+        <div class="form-field">
+            <div class="icon">
+                <img src="img/lock-icon.png" alt="Password Icon">
+            </div>
+            <input type="password" placeholder="Password" name="password" required />
+        </div>
+
+        <center>
+            <div class="form-field">
+                <button class="btn" type="submit">Send OTP</button>
+            </div>
+        </center>
+    </form>
+    <div id="popup">
+        <span id="popupMessage"></span>
+        <button id="okButton">OK</button>
+    </div>    
+    <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    var userNameOrEmailId = document.getElementsByName('userNameOrEmailId')[0].value;
+    var password = document.getElementsByName('password')[0].value;
+
+    // Determine if the input is an email or username
+    var isEmail = userNameOrEmailId.includes('@');
+    
+    // Now you can send both the username and email to the backend
+    fetch('http://localhost:8090/admin/send-otp', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "userName": isEmail ? null : userNameOrEmailId,
+            "emailId": isEmail ? userNameOrEmailId : null,
+            "password": password
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Response received:', data); // Debugging
+
+        var popup = document.getElementById('popup');
+        var popupMessage = document.getElementById('popupMessage');
+        var okButton = document.getElementById('okButton');
+
+        if (data.result === 'OTP sent successfully for admin login') {
+            popup.style.backgroundColor = 'white';
+            popupMessage.innerText = 'OTP sent successfully! Click OK to continue.';
+            okButton.addEventListener('click', function () {
+                window.location.href = 'verify.html';
+            });
+        } else {
+            popup.style.backgroundColor = 'white';
+            popupMessage.innerText = data.result; // Display the error message from the API
+            okButton.addEventListener('click', function () {
+                popup.style.display = 'none';
+                location.reload();
+            });
+        }
+
+        popup.style.display = 'flex';
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again later.');
+    });
+});
+
+
+     
+ </script>
+        
+</body>
+
+</html>

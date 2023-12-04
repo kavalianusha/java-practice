@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>updateAdminForm</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="adminUpdate.css">
+</head>
+<body>
+
+    <div class="top-navbar">
+       
+        <div class="logo">
+            <img src="https://pathbreakertech.com/uploads/settings/general_settings_1675415847_112573057.png" alt="PathBreaker Logo">
+        </div>
+        <h1 style="height: 20px; margin-right: 450px; text-align: center;">Hosting Hub Dashboard</h1>
+        <!-- <h1 class="dashboard-title">Hosting Hub Dashboard</h1> -->
+        <div class="dropdown-menu">
+          <a  id="logout" class="dropdown-item" href="#">
+            <img src="https://icons.veryicon.com/png/o/internet--web/website-icons/logout-8.png" alt="Logout Icon">
+              <span>Log Out</span>
+              <i class="fa fa-sign-out"></i>
+          </a>
+      </div>
+    </div>
+
+    <div class="left-navbar">
+        <div class="container">
+            <aside class="sidebar">
+              <ul>
+                <li class="has-submenu">
+                    <a href="#">ADMIN</a>
+                    <ul class="submenu">
+                      <li><a href="adminAdd.html">Register</a></li>
+                      <li><a href="adminView.html">View</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-submenu">
+                    <a href="#">DOMAIN</a>
+                    <ul class="submenu">
+                      <li><a href="domainAdd1.html">Register</a></li>
+                      <li><a href="domainView1.html">View</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-submenu">
+                    <a href="#">HOSTING</a>
+                    <ul class="submenu">
+                      <li><a href="hostingAdd1.html">Register</a></li>
+                      <li><a href="hostingView1.html">View</a></li>
+                    </ul>
+                  </li>
+                <li class="has-submenu">
+                  <a href="#">HOSTDOMAIN MAP</a>
+                  <ul class="submenu">
+                    <li><a href="mappingAdd1.html">Register</a></li>
+                    <li><a href="mappingView1.html">View</a></li>
+                  </ul>
+                </li>
+                <li class="has-submenu">
+                  <a href="#">EMAIL</a>
+                  <ul class="submenu">
+                    <li><a href="emailAdd1.html">Register</a></li>
+                    <li><a href="emailView1.html">View</a></li>
+                  </ul>
+                </li>
+                <li class="has-submenu">
+                  <a href="#">IT RETURNS</a>
+                  <ul class="submenu">
+                      <li><a href="itreturnsadd1.html">Register</a></li>
+                      <li><a href="itreturnsView1.html">View</a></li>
+                  </ul>
+              </li>
+            </ul>
+        </aside>
+          </div>
+        </div>
+          <div id="updatePopup1" class="popup1">
+            <span id="updatePopupMessage1">Do you really want to logout?</span>
+            <button id="updateYesButton1">Yes</button>
+            <button id="updateNoButton1">No</button>
+        </div>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function () {
+        // When the "Log Out" link is clicked
+        document.getElementById('logout').addEventListener('click', function() {
+            console.log('Log Out link clicked'); // Log to the console
+            document.getElementById('updatePopup1').style.display = 'block'; // Show the popup
+        });
+
+        // When the "Yes" button in the popup is clicked
+        document.getElementById('updateYesButton1').addEventListener('click', function() {
+            console.log('Yes button clicked'); // Log to the console
+            // Redirect to login.html
+            window.location.href = 'login.html';
+        });
+
+        // When the "No" button in the popup is clicked
+        document.getElementById('updateNoButton1').addEventListener('click', function() {
+            console.log('No button clicked'); // Log to the console
+            document.getElementById('updatePopup1').style.display = 'none'; // Hide the popup
+        });
+    });
+
+  </script>
+
+      <div class="updated-content">
+
+          <h1>Update Admin</h1>   
+
+    <form id="updateAdminForm">
+        <div class="form-column">
+            <div class="form-field">
+                <!-- <label for="name">Name</label> -->
+                <input type="text" id="name" name="name" placeholder="Enter the Name" required/><br>
+
+                <!-- <label for="userName">Username</label> -->
+                <input type="text" id="userName" name="userName" placeholder="Enter the UserName" required /><br>
+
+                <!-- <label for="password">Password</label> -->
+                <input type="password" id="password" name="password" placeholder="Enter the Password"  required /><br>
+            </div>
+
+            <div class="form-field">
+                <input type="text" id="emailId" name="emailId" placeholder="Enter the Email" required/><br>
+
+                <input type="tel" id="phoneNo" name="phoneNo" pattern="[0-9]{10}" placeholder="Enter the Phone No"  required /><br>
+
+                <!-- <label for="role">Select Role</label> -->
+                <select id="role" name="role" required>
+                    <option id="role1" value="select">Select Role</option><br>
+                    <option value="email">Email</option>
+                    <option value="admin">Admin</option>
+                    <option value="hosting">Hosting</option>
+                    <option value="itreturns">It Returns</option>
+
+                </select>
+            </div>
+            <div  class="cross-symbol">
+            <a href="adminView.html">
+              <img src="https://img.freepik.com/free-psd/x-symbol-isolated_23-2150500369.jpg?w=740&t=st=1699280425~exp=1699281025~hmac=ba4e60ee49cc0a9c7ee9f904c0f23860ce0452d23a7b7ebbb474a77002de99ae" alt="Cross Symbol">
+          </a>
+        </div>
+        </div>
+       <center><input type="submit" value="Update Admin"></center> 
+    </form>
+    </div>
+        <div id="updatePopup" class="popup">
+        <span id="updatePopupMessage">Do you really want to update?</span>
+        <button id="updateYesButton">Yes</button>
+        <button id="updateNoButton">No</button>
+    </div>
+    <div id="popup">
+      <span id="popupMessage"></span>
+      <button id="okButton">OK</button>
+  </div>
+</div>
+
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+    var urlParams = new URLSearchParams(window.location.search);
+    var adminId = urlParams.get('adminId');
+
+    // Fetch existing admin data
+    fetch(`http://localhost:8090/admin/${adminId}`)
+        .then(response => response.json())
+        .then(data => {
+            // Populate form fields with existing data
+            document.getElementById('name').value = data.name;
+            document.getElementById('userName').value = data.userName;
+            document.getElementById('emailId').value = data.emailId;
+            document.getElementById('password').value = data.password;
+            document.getElementById('phoneNo').value = data.phoneNo;
+            document.getElementById('role').value = data.role;
+        })
+        .catch(error => console.error('Error:', error));
+
+    // Add event listener for form submission
+    document.getElementById('updateAdminForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Show confirmation popup
+        document.getElementById('updatePopup').style.display = 'block';
+    });
+
+    document.getElementById('updateYesButton').addEventListener('click', function () {
+        var name = document.getElementById('name').value;
+        var userName = document.getElementById('userName').value;
+        var emailId = document.getElementById('emailId').value;
+        var password = document.getElementById('password').value;
+        var phoneNo = document.getElementById('phoneNo').value;
+        var role = document.getElementById('role').value;
+
+        fetch(`http://localhost:8090/admin/${adminId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "name": name,
+                "userName": userName,
+                "emailId": emailId,
+                "password": password,
+                "phoneNo": phoneNo,
+                "role": role
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            var popup = document.getElementById('popup');
+            var popupMessage = document.getElementById('popupMessage');
+            var okButton = document.getElementById('okButton');
+
+            popup.style.backgroundColor = 'white'; // Green color for success
+            popupMessage.innerText = 'Data is updated successfully';
+
+            popup.style.display = 'flex';
+
+            okButton.addEventListener('click', function () {
+                window.location.href = 'adminView.html'; // Redirect to adminView.html
+            });
+        })
+        .catch(error => console.error('Error:', error));
+
+        document.getElementById('updatePopup').style.display = 'none';
+    });
+
+    document.getElementById('updateNoButton').addEventListener('click', function () {
+        // Hide the confirmation popup
+        window.location.href = 'adminView.html';
+        document.getElementById('updatePopup').style.display = 'none';
+    });
+});
+
+</script>
+</body>
+</html>

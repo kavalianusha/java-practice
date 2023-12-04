@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Register</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="emailAdd.css">
+</head>
+<!-- <div class="box-container"></div> -->
+<body>
+
+    <div class="top-navbar">
+       
+        <div class="logo">
+            <img src="https://pathbreakertech.com/uploads/settings/general_settings_1675415847_112573057.png" alt="PathBreaker Logo">
+        </div>
+        <h1 style="height: 20px; margin-right: 450px; text-align: center;">Hosting Hub Dashboard</h1>
+    
+        <div class="dropdown-menu">
+          <a  id="logout" class="dropdown-item" href="#">
+            <img src="https://icons.veryicon.com/png/o/internet--web/website-icons/logout-8.png" alt="Logout Icon">
+              <span>Log Out</span>
+              <i class="fa fa-sign-out"></i>
+          </a>
+      </div>
+    </div>
+
+    <div class="left-navbar">
+        <div class="container">
+            <aside class="sidebar">
+                <ul>
+                    <li class="has-submenu">
+                        <a href="#">ADMIN</a>
+                        <ul class="submenu">
+                          <li><a href="adminAdd.html">Register</a></li>
+                          <li><a href="adminView.html">View</a></li>
+                        </ul>
+                      </li>
+                      <li class="has-submenu">
+                        <a href="#">DOMAIN</a>
+                        <ul class="submenu">
+                          <li><a href="domainAdd1.html">Register</a></li>
+                          <li><a href="domainView1.html">View</a></li>
+                        </ul>
+                      </li>
+                      <li class="has-submenu">
+                        <a href="#">HOSTING</a>
+                        <ul class="submenu">
+                          <li><a href="hostingAdd1.html">Register</a></li>
+                          <li><a href="hostingView1.html">View</a></li>
+                        </ul>
+                      </li>
+                    <li class="has-submenu">
+                      <a href="#">HOSTDOMAIN MAP</a>
+                      <ul class="submenu">
+                        <li><a href="mappingAdd1.html">Register</a></li>
+                        <li><a href="mappingView1.html">View</a></li>
+                      </ul>
+                    </li>
+                    <li class="has-submenu">
+                      <a href="#">EMAIL</a>
+                      <ul class="submenu">
+                        <li><a href="emailAdd1.html">Register</a></li>
+                        <li><a href="emailView1.html">View</a></li>
+                      </ul>
+                    </li>
+                    <li class="has-submenu">
+                      <a href="#">IT RETURNS</a>
+                      <ul class="submenu">
+                          <li><a href="itreturnsadd1.html">Register</a></li>
+                          <li><a href="itreturnsView1.html">View</a></li>
+                      </ul>
+                  </li>
+                </ul>
+            </aside>
+            <main class="content">
+            </main>
+          </div>
+    </div>
+    <div id="updatePopup" class="popup">
+      <span id="updatePopupMessage">Do you really want to logout?</span>
+      <button id="updateYesButton">Yes</button>
+      <button id="updateNoButton">No</button>
+  </div>
+
+<script>
+ document.addEventListener('DOMContentLoaded', function () {
+  // When the "Log Out" link is clicked
+  document.getElementById('logout').addEventListener('click', function() {
+      console.log('Log Out link clicked'); // Log to the console
+      document.getElementById('updatePopup').style.display = 'block'; // Show the popup
+  });
+
+  // When the "Yes" button in the popup is clicked
+  document.getElementById('updateYesButton').addEventListener('click', function() {
+      console.log('Yes button clicked'); // Log to the console
+      // Redirect to login.html
+      window.location.href = 'login.html';
+  });
+
+  // When the "No" button in the popup is clicked
+  document.getElementById('updateNoButton').addEventListener('click', function() {
+      console.log('No button clicked'); // Log to the console
+      document.getElementById('updatePopup').style.display = 'none'; // Hide the popup
+  });
+});
+
+</script>
+          <div class="register-content">
+          <h1>Email Registration</h1>   
+
+    <form id="updateEmailForm">
+        <div class="form-column">
+            <div class="form-field">
+
+                    <label for="email" id="e">Email</label>
+                    <input type="text" id="email" name="email" placeholder="Enter Email" required />
+
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter Username" required />
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter Password" required />
+                </div>
+            </div>    
+        <center><input type="submit" value="Register"></center> 
+    </div>
+    </form>
+    
+    <div id="popup">
+      <span id="popupMessage"></span>
+      <button id="okButton">OK</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById('updateEmailForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var email = document.getElementById('email').value;
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+
+    fetch('http://localhost:8090/api/email', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "email": email, // Added field
+            "username": username, // Added field
+            "password": password 
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        var popup = document.getElementById('popup');
+        var popupMessage = document.getElementById('popupMessage');
+        var okButton = document.getElementById('okButton');
+
+        if (data.result.includes('successful')) {
+            popup.style.backgroundColor = 'none'; // Green color for success
+            popupMessage.innerText = 'Registration successfull !';
+        } else {
+            popup.style.backgroundColor = 'non'; // Red color for error
+            popupMessage.innerText = 'Registration failed !';
+        }
+
+        popup.style.display = 'flex';
+     
+     okButton.addEventListener('click', function() {
+         popup.style.display = 'none';
+         location.reload();
+         window.location.href = 'emailView.html'; // Redirect to adminView.html
+     });
+ })
+ .catch(error => {
+     console.error('Error:', error);
+ });
+});
+</script>
+
+</body>
+
+</html>

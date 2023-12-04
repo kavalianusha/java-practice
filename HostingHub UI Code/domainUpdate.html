@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>updateAdminForm</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="domainUpdate.css">
+</head>
+<div class="box-container"></div>
+
+<body>
+
+    <div class="top-navbar">
+       
+        <div class="logo">
+            <img src="https://pathbreakertech.com/uploads/settings/general_settings_1675415847_112573057.png" alt="PathBreaker Logo">
+        </div>
+        <h1 style="height: 20px; margin-right: 450px; text-align: center;">Hosting Hub Dashboard</h1>
+        <!-- <h1 class="dashboard-title">Hosting Hub Dashboard</h1> -->
+    
+        <div class="dropdown-menu">
+          <a  id="logout" class="dropdown-item" href="#">
+            <img src="https://icons.veryicon.com/png/o/internet--web/website-icons/logout-8.png" alt="Logout Icon">
+              <span>Log Out</span>
+              <i class="fa fa-sign-out"></i>
+          </a>
+      </div>
+    </div>
+
+    <div class="left-navbar">
+        <div class="container">
+            <aside class="sidebar">
+              <ul>
+                <!-- <li class="has-submenu">
+                    <a href="#">ADMIN</a>
+                    <ul class="submenu">
+                      <li><a href="adminAdd.html">Register</a></li>
+                      <li><a href="adminView.html">View</a></li>
+                    </ul>
+                  </li> -->
+                  <li class="has-submenu">
+                    <a href="#">DOMAIN</a>
+                    <ul class="submenu">
+                      <li><a href="domainAdd.html">Register</a></li>
+                      <li><a href="domainView.html">View</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-submenu">
+                    <a href="#">HOSTING</a>
+                    <ul class="submenu">
+                      <li><a href="hostingAdd.html">Register</a></li>
+                      <li><a href="hostingView.html">View</a></li>
+                    </ul>
+                  </li>
+                <li class="has-submenu">
+                  <a href="#">HOSTDOMAIN MAP</a>
+                  <ul class="submenu">
+                    <li><a href="mappingAdd.html">Register</a></li>
+                    <li><a href="mappingView.html">View</a></li>
+                  </ul>
+                </li>
+                <!-- <li class="has-submenu">
+                  <a href="#">EMAIL</a>
+                  <ul class="submenu">
+                    <li><a href="emailAdd.html">Register</a></li>
+                    <li><a href="emailView.html">View</a></li>
+                  </ul>
+                </li> -->
+            </ul>
+          </div>
+        </div>
+        <div id="updatePopup1" class="popup1">
+          <span id="updatePopupMessage1">Do you really want to logout?</span>
+          <button id="updateYesButton1">Yes</button>
+          <button id="updateNoButton1">No</button>
+      </div>
+
+  <script>
+     document.addEventListener('DOMContentLoaded', function () {
+      // When the "Log Out" link is clicked
+      document.getElementById('logout').addEventListener('click', function() {
+          console.log('Log Out link clicked'); // Log to the console
+          document.getElementById('updatePopup1').style.display = 'block'; // Show the popup
+      });
+
+      // When the "Yes" button in the popup is clicked
+      document.getElementById('updateYesButton1').addEventListener('click', function() {
+          console.log('Yes button clicked'); // Log to the console
+          // Redirect to login.html
+          window.location.href = 'login.html';
+      });
+
+      // When the "No" button in the popup is clicked
+      document.getElementById('updateNoButton1').addEventListener('click', function() {
+          console.log('No button clicked'); // Log to the console
+          document.getElementById('updatePopup1').style.display = 'none'; // Hide the popup
+      });
+  });
+
+</script>
+
+      <div class="updated-content">
+
+          <h1>Update Domain</h1>   
+
+          <form id="updateAdminForm">
+            <div class="form-column">
+                <div class="form-field">
+                    <label for="domainName">Domain Name</label>
+                    <input type="text" id="domainName" name="domainName" placeholder="Enter Domain Name" required />
+        
+                    <label for="providerName">Provider Name</label>
+                    <input type="text" id="providerName" name="providerName" placeholder="Enter Provider Name" required />
+        
+                    <label for="domainUrl">Domain URL</label>
+                    <input type="text" id="domainUrl" name="domainUrl" placeholder="Enter Domain URL" required />
+        
+                    <label for="registrationDate">Registration Date</label>
+                    <input type="date" id="registrationDate" name="registrationDate" required />
+        
+                    <label for="expiryDate">Expiry Date</label>
+                    <input type="date" id="expiryDate" name="expiryDate" required />
+    
+                    <label for="userName">User Name</label>
+                    <input type="text" id="userName" name="userName" placeholder="Enter User Name" required />
+                    </div>
+                    <div class="form-field2">  
+                        
+                    <label for="password">Password</label>
+                    <input type="text" id="password" name="password" placeholder="Enter Password" required />
+    
+                    <label for="clientName">Client Name</label>
+                    <input type="text" id="clientName" name="clientName" placeholder="Enter Client Name" required />
+        
+                    <label for="duration">Duration</label>
+                    <input type="text" id="duration" name="duration" placeholder="Enter Duration" required />
+        
+                    <label for="registrationName">Name</label>
+                    <input type="text" id="registrationName" name="registrationName" placeholder="Enter Registration Name" required />
+        
+                    <label for="registrationMobileNumber">Mobile Number</label>
+                    <input type="tel" id="registrationMobileNumber" name="registrationMobileNumber" pattern="[0-9]{10}" placeholder="EnterMobile Number" required />
+        
+                    <label for="registrationEmail">Email</label>
+                    <input type="email" id="registrationEmail" name="registrationEmail" placeholder="Enter Registration Email" required />
+                </div>
+               
+                <div  class="cross-symbol">
+                  <a href="domainView.html">
+                    <img src="https://img.freepik.com/free-psd/x-symbol-isolated_23-2150500369.jpg?w=740&t=st=1699280425~exp=1699281025~hmac=ba4e60ee49cc0a9c7ee9f904c0f23860ce0452d23a7b7ebbb474a77002de99ae" alt="Cross Symbol">
+                </a>
+                 </div> 
+              </div>   
+            <center><input type="submit" value="Update"></center> 
+        </div>
+        </form>
+        <div id="updatePopup" class="popup">
+          <span id="updatePopupMessage">Do you really want to update?</span>
+          <button id="updateYesButton">Yes</button>
+          <button id="updateNoButton">No</button>
+        </div>
+
+    <div id="popup">
+      <span id="popupMessage"></span>
+      <button id="okButton">OK</button>
+  </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    var urlParams = new URLSearchParams(window.location.search);
+    var domainId = urlParams.get('domainId');
+
+    // Fetch existing admin data
+    fetch(`http://localhost:8090/api/domain/${domainId}`)
+        .then(response => response.json())
+        .then(data => {
+            // Populate form fields with existing data
+            document.getElementById('domainName').value = data.domainName;
+            document.getElementById('providerName').value = data.providerName;
+            document.getElementById('domainUrl').value = data.domainUrl;
+            document.getElementById('userName').value = data.userName;
+            document.getElementById('password').value = data.password;
+            document.getElementById('registrationDate').value = data.registrationDate;
+            document.getElementById('expiryDate').value = data.expiryDate;
+            document.getElementById('clientName').value = data.clientName;
+            document.getElementById('duration').value = data.duration;
+            document.getElementById('registrationName').value = data.registrationName;
+            document.getElementById('registrationMobileNumber').value = data.registrationMobileNumber;
+            document.getElementById('registrationEmail').value = data.registrationEmail;
+
+            console.log(data); // Add this line to check the response data
+        })
+        .catch(error => console.error('Error:', error));
+
+        document.getElementById('updateAdminForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Show confirmation popup
+        document.getElementById('updatePopup').style.display = 'block';
+    });
+
+    document.getElementById('updateYesButton').addEventListener('click', function () {
+      var domainName = document.getElementById('domainName').value;
+        var providerName = document.getElementById('providerName').value;
+        var domainUrl = document.getElementById('domainUrl').value;
+        var userName = document.getElementById('userName').value;
+        var password = document.getElementById('password').value;
+        var registrationDate = document.getElementById('registrationDate').value;
+        var expiryDate = document.getElementById('expiryDate').value;
+        var clientName = document.getElementById('clientName').value;
+        var duration = document.getElementById('duration').value;
+        var registrationName = document.getElementById('registrationName').value;
+        var registrationMobileNumber = document.getElementById('registrationMobileNumber').value;
+        var registrationEmail = document.getElementById('registrationEmail').value;
+
+        fetch(`http://localhost:8090/api/domain/${domainId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "domainName": domainName,
+                "providerName": providerName,
+                "domainUrl": domainUrl,
+                "userName": userName,
+                "password": password,
+                "registrationDate": registrationDate,
+                "expiryDate": expiryDate,
+                "clientName": clientName,
+                "duration": duration,
+                "registrationName": registrationName,
+                "registrationMobileNumber": registrationMobileNumber,
+                "registrationEmail": registrationEmail
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data.result);
+
+            var popup = document.getElementById('popup');
+            var popupMessage = document.getElementById('popupMessage');
+            var okButton = document.getElementById('okButton');
+
+         popup.style.backgroundColor = 'white'; // Green color for success
+         popupMessage.innerText = 'Data is updated successfully';
+
+         popup.style.display = 'flex';
+
+         okButton.addEventListener('click', function () {
+                window.location.href = 'domainView.html'; // Redirect to adminView.html
+            });
+        })
+        .catch(error => console.error('Error:', error));
+
+       document.getElementById('updatePopup').style.display = 'none';
+      });
+       document.getElementById('updateNoButton').addEventListener('click', function () {
+        // Hide the confirmation popup
+        window.location.href = 'domainView.html';
+        document.getElementById('updatePopup').style.display = 'none';
+    });
+});
+
+</script>
+</body>
+
+</html>

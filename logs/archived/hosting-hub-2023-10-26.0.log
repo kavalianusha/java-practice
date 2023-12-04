@@ -1,0 +1,112 @@
+2023-10-26 10:27:54,832 INFO  [restartedMain] org.springframework.boot.StartupInfoLogger.logStarting:51 Starting HostingHubApplication using Java 20.0.1 with PID 5904 (D:\HostingHub_WS\hosting-hub\target\classes started by Admin in D:\HostingHub_WS\hosting-hub)
+2023-10-26 10:27:54,837 INFO  [restartedMain] org.springframework.boot.SpringApplication.logStartupProfileInfo:637 No active profile set, falling back to 1 default profile: "default"
+2023-10-26 10:27:55,061 INFO  [restartedMain] org.springframework.boot.logging.DeferredLog.logTo:250 Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-10-26 10:27:55,062 INFO  [restartedMain] org.springframework.boot.logging.DeferredLog.logTo:250 For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-10-26 10:27:55,862 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate.multipleStoresDetected:291 Multiple Spring Data modules found, entering strict repository configuration mode
+2023-10-26 10:27:55,862 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn:138 Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-10-26 10:27:55,934 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn:208 Finished Spring Data repository scanning in 61 ms. Found 5 JPA repository interfaces.
+2023-10-26 10:27:56,247 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate.multipleStoresDetected:291 Multiple Spring Data modules found, entering strict repository configuration mode
+2023-10-26 10:27:56,249 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn:138 Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-10-26 10:27:56,274 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport.isStrictRepositoryCandidate:320 Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.hostinghub.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-10-26 10:27:56,275 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport.isStrictRepositoryCandidate:320 Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.hostinghub.repository.DomainRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-10-26 10:27:56,275 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport.isStrictRepositoryCandidate:320 Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.hostinghub.repository.EmailRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-10-26 10:27:56,276 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport.isStrictRepositoryCandidate:320 Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.hostinghub.repository.HostDomainMapRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-10-26 10:27:56,276 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport.isStrictRepositoryCandidate:320 Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.hostinghub.repository.HostingRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-10-26 10:27:56,276 INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn:208 Finished Spring Data repository scanning in 26 ms. Found 0 JDBC repository interfaces.
+2023-10-26 10:27:57,142 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize:108 Tomcat initialized with port(s): 8090 (http)
+2023-10-26 10:27:57,157 INFO  [restartedMain] org.apache.juli.logging.DirectJDKLog.log:173 Initializing ProtocolHandler ["http-nio-8090"]
+2023-10-26 10:27:57,177 INFO  [restartedMain] org.apache.juli.logging.DirectJDKLog.log:173 Starting service [Tomcat]
+2023-10-26 10:27:57,181 INFO  [restartedMain] org.apache.juli.logging.DirectJDKLog.log:173 Starting Servlet engine: [Apache Tomcat/10.1.13]
+2023-10-26 10:27:57,247 INFO  [restartedMain] org.apache.juli.logging.DirectJDKLog.log:173 Initializing Spring embedded WebApplicationContext
+2023-10-26 10:27:57,248 INFO  [restartedMain] org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.prepareWebApplicationContext:291 Root WebApplicationContext: initialization completed in 2182 ms
+2023-10-26 10:27:57,293 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource.getConnection:110 HikariPool-1 - Starting...
+2023-10-26 10:27:57,509 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool.checkFailFast:565 HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2b051cb
+2023-10-26 10:27:57,512 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource.getConnection:123 HikariPool-1 - Start completed.
+2023-10-26 10:27:57,523 INFO  [restartedMain] org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.logDataSources:88 H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/hostinghub'
+2023-10-26 10:27:57,870 INFO  [restartedMain] org.hibernate.jpa.internal.util.LogHelper.logPersistenceUnitInformation:31 HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-10-26 10:27:57,928 INFO  [restartedMain] org.hibernate.Version.logVersion:44 HHH000412: Hibernate ORM core version 6.2.9.Final
+2023-10-26 10:27:57,931 INFO  [restartedMain] org.hibernate.cfg.Environment.<clinit>:191 HHH000406: Using bytecode reflection optimizer
+2023-10-26 10:27:58,171 INFO  [restartedMain] org.hibernate.bytecode.internal.BytecodeProviderInitiator.buildBytecodeProvider:53 HHH000021: Bytecode provider name : bytebuddy
+2023-10-26 10:27:58,416 INFO  [restartedMain] org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo.addTransformer:87 No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-10-26 10:27:58,457 WARN  [restartedMain] org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.logSelectedDialect:100 HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-10-26 10:27:58,682 INFO  [restartedMain] org.hibernate.bytecode.internal.BytecodeProviderInitiator.buildBytecodeProvider:53 HHH000021: Bytecode provider name : bytebuddy
+2023-10-26 10:27:59,312 INFO  [restartedMain] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator.initiateService:51 HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-10-26 10:27:59,411 INFO  [restartedMain] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory:437 Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-10-26 10:27:59,802 INFO  [restartedMain] org.springframework.data.jpa.repository.query.QueryEnhancerFactory.<clinit>:47 Hibernate is in classpath; If applicable, HQL parser will be used.
+2023-10-26 10:28:00,668 WARN  [restartedMain] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor:231 spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-10-26 10:28:00,972 WARN  [restartedMain] org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration.checkTemplateLocationExists:101 Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2023-10-26 10:28:01,266 INFO  [restartedMain] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer.startServer:59 LiveReload server is running on port 35729
+2023-10-26 10:28:01,285 INFO  [restartedMain] org.apache.juli.logging.DirectJDKLog.log:173 Starting ProtocolHandler ["http-nio-8090"]
+2023-10-26 10:28:01,326 INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer.start:220 Tomcat started on port(s): 8090 (http) with context path ''
+2023-10-26 10:28:01,388 INFO  [restartedMain] org.springframework.boot.StartupInfoLogger.logStarted:57 Started HostingHubApplication in 7.482 seconds (process running for 8.429)
+2023-10-26 10:56:26,712 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool$HouseKeeper.run:804 HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m28s761ms70µs400ns).
+2023-10-26 12:08:52,712 INFO  [http-nio-8090-exec-1] org.apache.juli.logging.DirectJDKLog.log:173 Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-10-26 12:08:52,712 INFO  [http-nio-8090-exec-1] org.springframework.web.servlet.FrameworkServlet.initServletBean:532 Initializing Servlet 'dispatcherServlet'
+2023-10-26 12:08:52,728 INFO  [http-nio-8090-exec-1] org.springframework.web.servlet.FrameworkServlet.initServletBean:554 Completed initialization in 0 ms
+2023-10-26 12:08:56,904 INFO  [http-nio-8090-exec-2] com.example.hostinghub.service.AdminService.sendOtpByEmail:165 OTP sent successfully to: anushak@pathbreakertech.in
+2023-10-26 12:08:56,949 INFO  [http-nio-8090-exec-2] com.example.hostinghub.service.AdminService.sendOtp:119  OTP for admin sent to the emailId or Username is : anushak@pathbreakertech.in anushak@pathbreakertech.in
+2023-10-26 12:09:43,772 INFO  [http-nio-8090-exec-4] com.example.hostinghub.service.AdminService.sendOtpByEmail:165 OTP sent successfully to: anushak@pathbreakertech.in
+2023-10-26 12:09:43,780 INFO  [http-nio-8090-exec-4] com.example.hostinghub.service.AdminService.sendOtp:119  OTP for admin sent to the emailId or Username is : anushak@pathbreakertech.in anushak@pathbreakertech.in
+2023-10-26 12:09:46,652 INFO  [http-nio-8090-exec-6] com.example.hostinghub.service.AdminService.sendOtpByEmail:165 OTP sent successfully to: anushak@pathbreakertech.in
+2023-10-26 12:09:46,652 INFO  [http-nio-8090-exec-6] com.example.hostinghub.service.AdminService.sendOtp:119  OTP for admin sent to the emailId or Username is : anushak@pathbreakertech.in anushak@pathbreakertech.in
+2023-10-26 12:11:38,694 INFO  [http-nio-8090-exec-9] com.example.hostinghub.service.AdminService.sendOtpByEmail:165 OTP sent successfully to: anushak@pathbreakertech.in
+2023-10-26 12:11:38,696 INFO  [http-nio-8090-exec-9] com.example.hostinghub.service.AdminService.sendOtp:119  OTP for admin sent to the emailId or Username is : anushak@pathbreakertech.in anushak@pathbreakertech.in
+2023-10-26 12:11:52,423 INFO  [http-nio-8090-exec-2] com.example.hostinghub.service.AdminService.sendOtpByEmail:165 OTP sent successfully to: anushak@pathbreakertech.in
+2023-10-26 12:11:52,438 INFO  [http-nio-8090-exec-2] com.example.hostinghub.service.AdminService.sendOtp:119  OTP for admin sent to the emailId or Username is : anushak@pathbreakertech.in anushak@pathbreakertech.in
+2023-10-26 12:15:11,531 INFO  [http-nio-8090-exec-4] com.example.hostinghub.service.AdminService.sendOtpByEmail:165 OTP sent successfully to: anushak@pathbreakertech.in
+2023-10-26 12:15:11,548 INFO  [http-nio-8090-exec-4] com.example.hostinghub.service.AdminService.sendOtp:119  OTP for admin sent to the emailId or Username is : anushak@pathbreakertech.in anushak@pathbreakertech.in
+2023-10-26 12:18:36,127 INFO  [http-nio-8090-exec-8] com.example.hostinghub.service.AdminService.sendOtpByEmail:165 OTP sent successfully to: anushak@pathbreakertech.in
+2023-10-26 12:18:36,127 INFO  [http-nio-8090-exec-8] com.example.hostinghub.service.AdminService.sendOtp:119  OTP for admin sent to the emailId or Username is : anushak@pathbreakertech.in anushak@pathbreakertech.in
+2023-10-26 12:22:20,974 INFO  [http-nio-8090-exec-1] com.example.hostinghub.service.AdminService.sendOtpByEmail:165 OTP sent successfully to: anushak@pathbreakertech.in
+2023-10-26 12:22:20,974 INFO  [http-nio-8090-exec-1] com.example.hostinghub.service.AdminService.sendOtp:119  OTP for admin sent to the emailId or Username is : anushak@pathbreakertech.in anushak@pathbreakertech.in
+2023-10-26 12:24:08,295 INFO  [http-nio-8090-exec-5] com.example.hostinghub.service.AdminService.sendOtpByEmail:165 OTP sent successfully to: anushak@pathbreakertech.in
+2023-10-26 12:24:08,303 INFO  [http-nio-8090-exec-5] com.example.hostinghub.service.AdminService.sendOtp:119  OTP for admin sent to the emailId or Username is : anushak@pathbreakertech.in anushak@pathbreakertech.in
+2023-10-26 12:26:40,758 INFO  [http-nio-8090-exec-7] com.example.hostinghub.service.AdminService.sendOtp:107 Incorrect password for email: keerthisreev@pathbreakertech.in
+2023-10-26 12:27:04,047 INFO  [http-nio-8090-exec-10] com.example.hostinghub.service.AdminService.sendOtpByEmail:165 OTP sent successfully to: keerthisreev@pathbreakertech.in
+2023-10-26 12:27:04,062 INFO  [http-nio-8090-exec-10] com.example.hostinghub.service.AdminService.sendOtp:119  OTP for admin sent to the emailId or Username is : keerthisreev@pathbreakertech.in keerthisreev@pathbreakertech.in
+2023-10-26 12:32:05,159 INFO  [http-nio-8090-exec-2] com.example.hostinghub.service.AdminService.sendOtpByEmail:165 OTP sent successfully to: anushak@pathbreakertech.in
+2023-10-26 12:32:05,178 INFO  [http-nio-8090-exec-2] com.example.hostinghub.service.AdminService.sendOtp:119  OTP for admin sent to the emailId or Username is : anushak@pathbreakertech.in anushak@pathbreakertech.in
+2023-10-26 12:32:16,448 INFO  [http-nio-8090-exec-5] com.example.hostinghub.service.AdminService.sendOtpByEmail:165 OTP sent successfully to: anushak@pathbreakertech.in
+2023-10-26 12:32:16,448 INFO  [http-nio-8090-exec-5] com.example.hostinghub.service.AdminService.sendOtp:119  OTP for admin sent to the emailId or Username is : anushak@pathbreakertech.in anushak@pathbreakertech.in
+2023-10-26 12:33:12,235 INFO  [http-nio-8090-exec-6] com.example.hostinghub.service.AdminService.sendOtp:107 Incorrect password for email: anushak@pathbreakertech.in
+2023-10-26 12:33:17,403 INFO  [http-nio-8090-exec-8] com.example.hostinghub.service.AdminService.sendOtp:107 Incorrect password for email: anushak@pathbreakertech.in
+2023-10-26 12:33:45,506 INFO  [http-nio-8090-exec-9] com.example.hostinghub.service.AdminService.sendOtp:107 Incorrect password for email: anushak@pathbreakertech.in
+2023-10-26 12:34:09,220 INFO  [http-nio-8090-exec-2] com.example.hostinghub.service.AdminService.sendOtp:107 Incorrect password for email: anushak@pathbreakertech.in
+2023-10-26 12:34:23,456 INFO  [http-nio-8090-exec-5] com.example.hostinghub.service.AdminService.sendOtp:107 Incorrect password for email: anushak@pathbreakertech.in
+2023-10-26 12:38:10,637 INFO  [http-nio-8090-exec-6] com.example.hostinghub.service.AdminService.sendOtp:107 Incorrect password for email: anushak@pathbreakertech.in
+2023-10-26 12:40:58,197 INFO  [http-nio-8090-exec-8] com.example.hostinghub.service.AdminService.sendOtp:107 Incorrect password for email: anushak@pathbreakertech.in
+2023-10-26 12:41:05,383 INFO  [http-nio-8090-exec-9] com.example.hostinghub.service.AdminService.sendOtp:107 Incorrect password for email: anushak@pathbreakertech.in
+2023-10-26 12:42:16,913 INFO  [http-nio-8090-exec-2] com.example.hostinghub.service.AdminService.sendOtp:107 Incorrect password for email: anushak@pathbreakertech.in
+2023-10-26 12:42:28,820 INFO  [http-nio-8090-exec-5] com.example.hostinghub.service.AdminService.sendOtp:107 Incorrect password for email: anushak@pathbreakertech.in
+2023-10-26 12:42:35,940 INFO  [http-nio-8090-exec-6] com.example.hostinghub.service.AdminService.sendOtp:107 Incorrect password for email: anushak@pathbreakertech.in
+2023-10-26 12:42:52,686 INFO  [http-nio-8090-exec-8] com.example.hostinghub.service.AdminService.sendOtp:107 Incorrect password for email: anushak@pathbreakertech.in
+2023-10-26 12:43:16,729 INFO  [http-nio-8090-exec-9] com.example.hostinghub.service.AdminService.sendOtp:107 Incorrect password for email: anushak@pathbreakertech.in
+2023-10-26 12:43:21,944 INFO  [http-nio-8090-exec-2] com.example.hostinghub.service.AdminService.sendOtp:107 Incorrect password for email: anushak@pathbreakertech.in
+2023-10-26 12:44:01,418 INFO  [http-nio-8090-exec-5] com.example.hostinghub.service.AdminService.sendOtp:107 Incorrect password for email: anushak@pathbreakertech.in
+2023-10-26 12:44:11,805 INFO  [http-nio-8090-exec-6] com.example.hostinghub.service.AdminService.sendOtpByEmail:165 OTP sent successfully to: anushak@pathbreakertech.in
+2023-10-26 12:44:11,821 INFO  [http-nio-8090-exec-6] com.example.hostinghub.service.AdminService.sendOtp:119  OTP for admin sent to the emailId or Username is : anushak@pathbreakertech.in anushak@pathbreakertech.in
+2023-10-26 12:44:44,105 INFO  [http-nio-8090-exec-8] com.example.hostinghub.service.AdminService.sendOtp:107 Incorrect password for email: anushak@pathbreakertech.in
+2023-10-26 12:46:55,463 INFO  [http-nio-8090-exec-9] com.example.hostinghub.service.AdminService.registerAdmin:48 Email already exists in the db: anushak@pathbreakertech.in
+2023-10-26 12:56:53,350 INFO  [http-nio-8090-exec-2] com.example.hostinghub.service.AdminService.registerAdmin:48 Email already exists in the db: vamsip@pathbreakertech.in
+2023-10-26 12:57:23,479 INFO  [http-nio-8090-exec-5] com.example.hostinghub.service.AdminService.sendEmail:81 Password sent successfully to: harib@pathbreakertech.in
+2023-10-26 12:57:23,527 INFO  [http-nio-8090-exec-5] com.example.hostinghub.service.AdminService.registerAdmin:68 Admin registration successful: harib@pathbreakertech.in
+2023-10-26 12:57:58,668 INFO  [http-nio-8090-exec-6] com.example.hostinghub.service.AdminService.registerAdmin:48 Email already exists in the db: harib@pathbreakertech.in
+2023-10-26 12:58:43,864 INFO  [http-nio-8090-exec-8] com.example.hostinghub.service.AdminService.sendEmail:81 Password sent successfully to: anusham@pathbreakertech.in
+2023-10-26 12:58:43,864 INFO  [http-nio-8090-exec-8] com.example.hostinghub.service.AdminService.registerAdmin:68 Admin registration successful: anusham@pathbreakertech.in
+2023-10-26 13:02:07,386 INFO  [http-nio-8090-exec-1] com.example.hostinghub.service.AdminService.sendEmail:81 Password sent successfully to: keethi@pathbreakertech.in
+2023-10-26 13:02:07,452 INFO  [http-nio-8090-exec-1] com.example.hostinghub.service.AdminService.registerAdmin:68 Admin registration successful: keethi@pathbreakertech.in
+2023-10-26 13:03:18,244 INFO  [http-nio-8090-exec-5] com.example.hostinghub.service.AdminService.registerAdmin:48 Email already exists in the db: keerthisreev@pathbreakertech.in
+2023-10-26 13:13:57,848 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool$HouseKeeper.run:804 HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m58s979ms436µs500ns).
+2023-10-26 13:18:07,520 INFO  [http-nio-8090-exec-6] com.example.hostinghub.service.AdminService.verifyOtp:132 Invalid OTP for Admin
+2023-10-26 13:18:20,143 INFO  [http-nio-8090-exec-8] com.example.hostinghub.service.AdminService.verifyOtp:132 Invalid OTP for Admin
+2023-10-26 13:18:22,652 INFO  [http-nio-8090-exec-9] com.example.hostinghub.service.AdminService.verifyOtp:132 Invalid OTP for Admin
+2023-10-26 13:18:31,459 INFO  [http-nio-8090-exec-2] com.example.hostinghub.service.AdminService.verifyOtp:132 Invalid OTP for Admin
+2023-10-26 13:18:56,596 INFO  [http-nio-8090-exec-5] com.example.hostinghub.service.AdminService.verifyOtp:152 Login successful for Admin emailId: anushak@pathbreakertech.in
+2023-10-26 14:28:02,556 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool$HouseKeeper.run:804 HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=25m1s38ms313µs600ns).
+2023-10-26 14:38:56,580 INFO  [http-nio-8090-exec-7] com.example.hostinghub.service.AdminService.verifyOtp:132 Invalid OTP for Admin
+2023-10-26 15:13:39,259 INFO  [http-nio-8090-exec-10] com.example.hostinghub.service.AdminService.sendEmail:81 Password sent successfully to: anushak@pathbreakertech.in
+2023-10-26 15:13:39,344 INFO  [http-nio-8090-exec-10] com.example.hostinghub.service.AdminService.registerAdmin:68 Admin registration successful: anushak@pathbreakertech.in
+2023-10-26 15:13:45,426 INFO  [http-nio-8090-exec-1] com.example.hostinghub.service.AdminService.registerAdmin:48 Email already exists in the db: anushak@pathbreakertech.in
+2023-10-26 15:18:19,683 INFO  [http-nio-8090-exec-3] com.example.hostinghub.service.AdminService.registerAdmin:48 Email already exists in the db: anushak@pathbreakertech.in
+2023-10-26 16:22:49,685 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool$HouseKeeper.run:804 HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m15s427ms909µs100ns).
+2023-10-26 17:37:25,640 WARN  [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool$HouseKeeper.run:804 HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m34s800ms109µs900ns).

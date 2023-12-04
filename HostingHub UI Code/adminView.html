@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin viewport</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="adminView.css">
+</head>
+
+<body>
+
+  <div class="top-navbar">
+     
+      <div class="logo">
+          <img src="https://pathbreakertech.com/uploads/settings/general_settings_1675415847_112573057.png" alt="PathBreaker Logo">
+      </div>
+      <h1 style="height: 20px; margin-right: 450px; text-align: center;">Hosting Hub Dashboard</h1>
+  <div class="dropdown-menu">
+      <a  id="logout" class="dropdown-item" href="#">
+        <img src="https://icons.veryicon.com/png/o/internet--web/website-icons/logout-8.png" alt="Logout Icon">
+          <span>Log Out</span>
+          <i class="fa fa-sign-out"></i>
+      </a>
+  </div>
+</div>
+  <div class="left-navbar">
+      <div class="container">
+          <aside class="sidebar">
+            <ul>
+              <li class="has-submenu">
+                  <a href="#">ADMIN</a>
+                  <ul class="submenu">
+                    <li><a href="adminAdd.html">Register</a></li>
+                    <li><a href="adminView.html">View</a></li>
+                  </ul>
+                </li>
+                <li class="has-submenu">
+                  <a href="#">DOMAIN</a>
+                  <ul class="submenu">
+                    <li><a href="domainAdd1.html">Register</a></li>
+                    <li><a href="domainView1.html">View</a></li>
+                  </ul>
+                </li>
+                <li class="has-submenu">
+                  <a href="#">HOSTING</a>
+                  <ul class="submenu">
+                    <li><a href="hostingAdd1.html">Register</a></li>
+                    <li><a href="hostingView1.html">View</a></li>
+                  </ul>
+                </li>
+              <li class="has-submenu">
+                <a href="#">HOSTDOMAIN MAP</a>
+                <ul class="submenu">
+                  <li><a href="mappingAdd1.html">Register</a></li>
+                  <li><a href="mappingView1.html">View</a></li>
+                </ul>
+              </li>
+              <li class="has-submenu">
+                <a href="#">EMAIL</a>
+                <ul class="submenu">
+                  <li><a href="emailAdd1.html">Register</a></li>
+                  <li><a href="emailView1.html">View</a></li>
+                </ul>
+              </li>
+              <li class="has-submenu">
+                <a href="#">IT RETURNS</a>
+                <ul class="submenu">
+                    <li><a href="itreturnsadd1.html">Register</a></li>
+                    <li><a href="itreturnsView1.html">View</a></li>
+                </ul>
+            </li>
+            </ul>
+          </aside>
+      </div>
+        </div>
+
+  <div id="updatePopup" class="popup">
+      <span id="updatePopupMessage">Do you really want to logout?</span>
+      <button id="updateYesButton">Yes</button>
+      <button id="updateNoButton">No</button>
+  </div>
+
+  <script>
+     document.addEventListener('DOMContentLoaded', function () {
+      // When the "Log Out" link is clicked
+      document.getElementById('logout').addEventListener('click', function() {
+          console.log('Log Out link clicked'); // Log to the console
+          document.getElementById('updatePopup').style.display = 'block'; // Show the popup
+      });
+
+      // When the "Yes" button in the popup is clicked
+      document.getElementById('updateYesButton').addEventListener('click', function() {
+          console.log('Yes button clicked'); // Log to the console
+          // Redirect to login.html
+          window.location.href = 'login.html';
+      });
+
+      // When the "No" button in the popup is clicked
+      document.getElementById('updateNoButton').addEventListener('click', function() {
+          console.log('No button clicked'); // Log to the console
+          document.getElementById('updatePopup').style.display = 'none'; // Hide the popup
+      });
+  });
+
+</script>
+
+    <div class="container">
+      <h1 class="heading">Admin List</h1>
+      <table id="adminTable">
+        <thead>
+            <tr>
+                <th>Admin Id</th>
+                <th>Name</th>
+                <th>User Name</th>
+                <th>Phone No</th>
+                <th>Email Id</th>
+                <th>Password</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr> 
+        </thead>
+        <tbody>
+            <!-- Data will be populated here using JavaScript -->
+        </tbody>
+    </table>
+<!-- Popup for Delete Confirmation -->
+<div id="deletePopup" class="popup">
+    <span id="deletePopupMessage">Do you really want to delete?</span>
+    <button id="deleteYesButton">Yes</button>
+    <button id="deleteNoButton">No</button>
+
+</div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // const adminTable = document.getElementById('adminTable').getElementsByTagName('tbody')[0];
+
+            function deleteAdmin(adminId) {
+                fetch(`http://localhost:8090/admin/${adminId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.result.includes('deleted')) {
+                            console.log(`Admin with ID ${adminId} has been deleted.`);
+                            const row = document.getElementById(`adminRow_${adminId}`);
+                            location.reload();
+                        } else {
+                            console.error('Error:', data.result);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
+
+        function updateAdmin(adminId) {
+        // Redirect to update page with domainId
+        window.location.href = `adminUpdate.html?adminId=${adminId}`;
+        }
+
+            function showDeletePopup(adminId) {
+                document.getElementById('deletePopup').style.display = 'block';
+
+                document.getElementById('deleteYesButton').addEventListener('click', function () {
+                    deleteAdmin(adminId);
+                    document.getElementById('deletePopup').style.display = 'none';
+                });
+
+                document.getElementById('deleteNoButton').addEventListener('click', function () {
+                    document.getElementById('deletePopup').style.display = 'none';
+                });
+            }
+
+            fetch('http://localhost:8090/admin/all')
+            .then(response => response.json())
+            .then(data => {
+            const adminTable = document.getElementById('adminTable').getElementsByTagName('tbody')[0];
+                    data.forEach(admin => {
+                        const row = adminTable.insertRow();
+                        const adminIdCell = row.insertCell(0);
+                        const nameCell = row.insertCell(1);
+                        const userNameCell = row.insertCell(2);
+                        const phoneNoCell = row.insertCell(3);
+                        const emailIdCell = row.insertCell(4);
+                        const passwordCell = row.insertCell(5);
+                        const roleCell = row.insertCell(6);
+                        const actionCell = row.insertCell(7);
+
+                        adminIdCell.innerText = admin.adminId;
+                        nameCell.innerText = admin.name;
+                        userNameCell.innerText = admin.userName;
+                        phoneNoCell.innerText = admin.phoneNo;
+                        emailIdCell.innerText = admin.emailId;
+                        passwordCell.innerText = admin.password;
+                        roleCell.innerText = admin.role;
+                        console.log("the response is :", admin)
+
+                        const editButton = document.createElement('button');
+                        editButton.type = 'button';
+                        editButton.classList.add('edit-icon');
+                        editButton.innerHTML = '<img src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png" class="edit-icon" alt="Edit">';
+                        editButton.dataset.adminId = admin.adminId;
+
+                        const deleteButton = document.createElement('button');
+                        deleteButton.type = 'button';
+                        deleteButton.classList.add('delete-icon');
+                        deleteButton.innerHTML = '<img src="https://icons.veryicon.com/png/o/miscellaneous/icon-15/icon-delete-3.png" class="delete-icon" alt="Delete">';
+                        deleteButton.dataset.adminId = admin.adminId;
+
+                        editButton.addEventListener('click', function () {
+                            const adminId = this.dataset.adminId;
+                            updateAdmin(adminId);
+                        });
+
+                        deleteButton.addEventListener('click', function () {
+                            const adminId = this.dataset.adminId;
+                            showDeletePopup(adminId);
+                        });
+
+                        actionCell.appendChild(editButton);
+                        actionCell.appendChild(deleteButton);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+
+
+</html>

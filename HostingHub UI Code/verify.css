@@ -1,0 +1,73 @@
+body{
+    background-image: linear-gradient(to right, rgb(236, 78, 236), #e2e23c);
+}
+
+.container {
+    width: 500px;
+    border-radius: 15px;
+    background-color: aliceblue;
+    text-align: center;
+    margin-top: 100px;
+    position: relative;
+    margin-left: 410px;
+    box-shadow: 2px 2px 2px black;
+    border: 10px solid aqua; /* Adjust the value to increase or decrease the border thickness */
+}
+.form-field {
+    padding: 30px 5px;
+    position: relative;
+    margin-bottom: 1rem;
+}
+.form-field input {
+    width: 20%; /* Make the input take up 100% of the available width */
+    padding: 10px; /* Add some padding inside the input box */
+    border: 2px solid black; /* Set the border properties */
+    border-radius: 5px; /* Add rounded corners */
+    font-size: 16px; /* Set the font size */
+    box-shadow: 2px 2px 2px black;
+}
+.btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 15px;
+}
+#popup {
+    display: none;
+    position: fixed;
+    top: 80%;
+    /* right: 30px; */
+    left: 55%; 
+    transform: translate(-50%, -50%);
+    background-color: rgb(235, 235, 237);
+    border: 1px solid #000000;
+    padding: 30px;
+    border-radius: 20px;
+    padding-right: 40px;
+    box-shadow: 6px 5px 8px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    margin-top: -450px;
+    margin-right: 100px;
+    margin-left: -60px;
+    text-align: center; /* Center the content */
+  }
+  
+  #popupMessage {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: medium;
+  color: #222222;
+  text-align: center;
+  margin-left: 30px;
+  margin-right: 10px;
+  }
+  
+  #okButton {
+    border-style: solid;
+    border-color: black;
+    background-color: #007bff;
+    border-radius: 5px;    
+}
